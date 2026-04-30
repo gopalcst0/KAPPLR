@@ -76,72 +76,37 @@ export function Navbar() {
             )}
           </button>
         </div>
+      </nav>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden border-t border-border py-4 space-y-2 rounded-b-3xl">
-            <Link href="/">
+      {/* Mobile Navigation — separate card below the pill */}
+      {isOpen && (
+        <div className="md:hidden max-w-7xl mx-auto mt-2 bg-white rounded-2xl shadow-lg border border-border/40 px-4 py-4 space-y-1">
+          {[
+            { label: 'Home', href: '/' },
+            { label: 'Features', href: '/features' },
+            { label: 'Use Cases', href: '/use-cases' },
+            { label: 'How It Works', href: '/how-it-works' },
+            { label: 'Pricing', href: '/pricing' },
+            { label: 'Contact', href: '/contact' },
+          ].map(({ label, href }) => (
+            <Link key={href} href={href} onClick={() => setIsOpen(false)}>
               <Button
                 variant="ghost"
-                className="w-full justify-start text-foreground rounded-full"
-                onClick={() => setIsOpen(false)}
+                className="w-full justify-start text-foreground hover:text-accent-foreground rounded-xl cursor-pointer"
               >
-                Home
+                {label}
               </Button>
             </Link>
-            <Link href="/features">
-              <Button
-                variant="ghost"
-                className="w-full justify-start text-foreground rounded-full"
-                onClick={() => setIsOpen(false)}
-              >
-                Features
-              </Button>
-            </Link>
-            <Link href="/use-cases">
-              <Button
-                variant="ghost"
-                className="w-full justify-start text-foreground rounded-full"
-                onClick={() => setIsOpen(false)}
-              >
-                Use Cases
-              </Button>
-            </Link>
-            <Link href="/how-it-works">
-              <Button
-                variant="ghost"
-                className="w-full justify-start text-foreground rounded-full"
-                onClick={() => setIsOpen(false)}
-              >
-                How It Works
-              </Button>
-            </Link>
-            <Link href="/pricing">
-              <Button
-                variant="ghost"
-                className="w-full justify-start text-foreground rounded-full"
-                onClick={() => setIsOpen(false)}
-              >
-                Pricing
-              </Button>
-            </Link>
-            <Link href="/contact">
-              <Button
-                variant="ghost"
-                className="w-full justify-start text-foreground rounded-full"
-                onClick={() => setIsOpen(false)}
-              >
-                Contact
-              </Button>
-            </Link>
-            <Link href="/pricing">
+          ))}
+          <div className="pt-2 border-t border-border">
+            <Link href="/pricing" onClick={() => setIsOpen(false)}>
               <Button className="w-full bg-primary hover:bg-secondary text-primary-foreground rounded-full">
                 Get Started Free
               </Button>
             </Link>
           </div>
-        )}
-      </nav>
+        </div>
+      )}
     </div>
   )
 }
