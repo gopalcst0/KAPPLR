@@ -35,9 +35,9 @@ export default function ContactPage() {
       <section className="pb-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">
           {[
-            { icon: Mail,    label: 'Email Us',    value: 'support@myleadingcampus.com', sub: 'We reply within 4 hours',    color: 'bg-blue-50 text-blue-600' },
+            { icon: Mail,    label: 'Email Us',    value: 'support@myleadingcampus.com', sub: 'We reply within 4 hours',    color: 'bg-purple-50 text-purple-600' },
             { icon: Phone,   label: 'Call Us',     value: '+91 98743 44994',              sub: 'Mon–Sat, 9am–6pm IST',       color: 'bg-green-50 text-green-600' },
-            { icon: MapPin,  label: 'Our Office',  value: 'Kolkata, West Bengal',         sub: 'India',                      color: 'bg-violet-50 text-violet-600' },
+            { icon: MapPin,  label: 'Our Office',  value: 'Kolkata, West Bengal',         sub: 'India',                      color: 'bg-teal-50 text-teal-600' },
           ].map((c) => {
             const Icon = c.icon
             return (
