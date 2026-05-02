@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Mail, Linkedin, Twitter } from 'lucide-react'
 
 export function Footer() {
@@ -10,9 +11,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="space-y-5">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center font-extrabold text-white text-xl">K</div>
-              <span className="font-extrabold text-2xl text-white tracking-tight">KAPPLR</span>
+            <Link href="/" className="flex items-center">
+              <Image src="/logo-removebg.png" alt="KAPPLR" width={200} height={66} className="h-16 w-auto object-contain brightness-0 invert" />
             </Link>
             <p className="text-sm text-white/70 leading-relaxed">
               Turn your alumni into lifelong brand ambassadors and drive institutional growth.

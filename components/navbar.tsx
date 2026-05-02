@@ -16,7 +16,7 @@ export function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Image src="/logo.png" alt="KAPPLR" width={220} height={72} className="h-16 w-auto object-contain" priority />
+            <Image src="/logo-removebg.png" alt="KAPPLR" width={300} height={100} className="h-24 w-auto object-contain" priority />
           </Link>
 
           {/* Desktop Navigation */}

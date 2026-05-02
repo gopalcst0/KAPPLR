@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import { ArrowRight, Users, TrendingUp, Award, Zap, CheckCircle2, Star, MessageSquare, Mail, Smartphone, BarChart3, Shield, Handshake, Settings } from 'lucide-react'
 import Image from 'next/image'
+import { Animate, Stagger } from '@/components/animate'
 
 export default function Home() {
   return (
@@ -42,26 +43,34 @@ export default function Home() {
         {/* Text content — bottom-left overlay */}
         <div className="relative z-10 flex flex-col justify-end h-full px-6 sm:px-10 lg:px-16 pb-16 pt-24 md:pt-32" style={{ minHeight: 'calc(90vh - 80px)' }}>
           <div className="max-w-2xl space-y-5">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-brand-gradient">
-              Turn Alumni Into Your Greatest Asset
-            </h1>
-            <p className="text-lg text-slate-600 max-w-md leading-relaxed">
-              KAPPLR helps schools and colleges build engaged alumni communities, unlock mentorship opportunities, and drive institutional growth. Just start — it&apos;s that easy.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <Link href="/pricing">
-                <Button size="lg" className="bg-brand-gradient hover:opacity-90 text-white rounded-full px-8 font-semibold shadow-none">
-                  Start Free Trial
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-              <Link href="/how-it-works">
-                <Button size="lg" variant="outline" className="rounded-full px-8 bg-white/70 hover:bg-white border-slate-300 text-slate-700">
-                  See How It Works
-                </Button>
-              </Link>
-            </div>
-            <p className="text-xs text-slate-500">30-day free trial · No credit card required · Cancel anytime</p>
+            <Animate variant="fadeUp" delay={0}>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-brand-gradient">
+                Turn Alumni Into Your Greatest Asset
+              </h1>
+            </Animate>
+            <Animate variant="fadeUp" delay={0.15}>
+              <p className="text-lg text-slate-600 max-w-md leading-relaxed">
+                KAPPLR helps schools and colleges build engaged alumni communities, unlock mentorship opportunities, and drive institutional growth. Just start — it&apos;s that easy.
+              </p>
+            </Animate>
+            <Animate variant="fadeUp" delay={0.3}>
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                <Link href="/pricing">
+                  <Button size="lg" className="bg-brand-gradient hover:opacity-90 text-white rounded-full px-8 font-semibold shadow-none">
+                    Start Free Trial
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </Link>
+                <Link href="/how-it-works">
+                  <Button size="lg" variant="outline" className="rounded-full px-8 bg-white/70 hover:bg-white border-slate-300 text-slate-700">
+                    See How It Works
+                  </Button>
+                </Link>
+              </div>
+            </Animate>
+            <Animate variant="fadeUp" delay={0.45}>
+              <p className="text-xs text-slate-500">30-day free trial · No credit card required · Cancel anytime</p>
+            </Animate>
           </div>
         </div>
       </section>
@@ -69,7 +78,7 @@ export default function Home() {
       {/* Social Proof Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/50 border-y border-border">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <Stagger className="grid grid-cols-1 md:grid-cols-4 gap-8" childVariant="fadeUp">
             <div className="text-center space-y-2">
               <div className="text-4xl font-bold text-primary">1000+</div>
               <p className="text-muted-foreground">Alumni Reconnected Monthly</p>
@@ -86,20 +95,21 @@ export default function Home() {
               <div className="text-4xl font-bold text-primary">95%</div>
               <p className="text-muted-foreground">User Satisfaction Rating</p>
             </div>
-          </div>
+          </Stagger>
         </div>
       </section>
 
       {/* Key Benefits */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 space-y-4">
+          <Animate variant="fadeUp" className="text-center mb-16 space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">Why Schools Choose KAPPLR</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Built specifically for academic institutions to maximize alumni engagement and institutional impact.
             </p>
-          </div>
+          </Animate>
 
+          <Animate variant="fadeUp" delay={0.15}>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
@@ -196,6 +206,7 @@ export default function Home() {
               )
             })}
           </div>
+          </Animate>
         </div>
       </section>
 
@@ -203,7 +214,7 @@ export default function Home() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+            <Animate variant="slideLeft" className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold text-foreground">Build a Connected Alumni Community</h2>
               <p className="text-lg text-muted-foreground">
                 Your alumni are your institution&apos;s greatest advocates. KAPPLR makes it easy to keep them engaged, connected, and invested in your success.
@@ -221,7 +232,8 @@ export default function Home() {
                   Learn More <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
-            </div>
+            </Animate>
+            <Animate variant="slideRight">
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/alumni-header-1-nDRXimGOHF9MC0fpDacvoGpjXSrNFL.jpg"
               alt="Alumni community - diverse people from different generations"
@@ -229,6 +241,7 @@ export default function Home() {
               height={500}
               className="rounded-2xl w-full h-full object-cover shadow-xl"
             />
+            </Animate>
           </div>
         </div>
       </section>
@@ -236,13 +249,13 @@ export default function Home() {
       {/* How It Works — Teaser */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12 space-y-3">
+          <Animate variant="fadeUp" className="text-center mb-12 space-y-3">
             <div className="inline-block bg-primary/10 text-primary rounded-full px-4 py-1.5 text-sm font-medium">Simple Process</div>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">Up &amp; Running in 4 Steps</h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
               Launch your alumni platform in minutes — no technical expertise required.
             </p>
-          </div>
+          </Animate>
 
           {(() => {
             const steps = [
@@ -385,10 +398,11 @@ export default function Home() {
       {/* Feature Spotlight */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 space-y-4">
+          <Animate variant="fadeUp" className="text-center mb-16 space-y-4">
             <div className="inline-block bg-primary/10 text-primary rounded-full px-4 py-1.5 text-sm font-medium">Platform Highlights</div>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">Everything Alumni Engagement Needs</h2>
-          </div>
+          </Animate>
+          <Animate variant="fadeUp" delay={0.1}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
@@ -425,6 +439,7 @@ export default function Home() {
               )
             })}
           </div>
+          </Animate>
         </div>
       </section>
 
@@ -433,7 +448,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto">
 
           {/* Section header */}
-          <div className="text-center mb-14 space-y-4">
+          <Animate variant="fadeUp" className="text-center mb-14 space-y-4">
             <div className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-1.5 text-sm font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               Multi-Channel
@@ -442,12 +457,12 @@ export default function Home() {
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               KAPPLR connects with tools your alumni already use — no new downloads or accounts needed.
             </p>
-          </div>
+          </Animate>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             {/* Left — channel cards + features */}
-            <div className="space-y-6">
+            <Animate variant="slideLeft" className="space-y-6">
               {/* 3 channel cards */}
               <div className="grid grid-cols-3 gap-4">
                 {[
@@ -490,9 +505,10 @@ export default function Home() {
                   )
                 })}
               </div>
-            </div>
+            </Animate>
 
             {/* Right — integration hub */}
+            <Animate variant="slideRight">
             <div className="relative bg-gradient-to-br from-slate-50 to-primary/5 rounded-3xl p-8 border border-border/40 overflow-hidden">
               {/* Decorative rings */}
               <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -529,6 +545,7 @@ export default function Home() {
                 <span className="text-xs text-muted-foreground">+ More integrations coming soon</span>
               </div>
             </div>
+            </Animate>
           </div>
         </div>
       </section>
@@ -536,14 +553,15 @@ export default function Home() {
       {/* Testimonials */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16 space-y-4">
+          <Animate variant="fadeUp" className="text-center mb-16 space-y-4">
             <div className="inline-block bg-primary/10 text-primary rounded-full px-4 py-1.5 text-sm font-medium">What They Say</div>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">Trusted by Academic Leaders</h2>
             <p className="text-lg text-muted-foreground max-w-xl mx-auto">
               Institutions across India rely on KAPPLR to power their alumni success.
             </p>
-          </div>
+          </Animate>
 
+          <Animate variant="fadeUp" delay={0.1}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
@@ -588,12 +606,14 @@ export default function Home() {
               </div>
             ))}
           </div>
+          </Animate>
         </div>
       </section>
 
       {/* Pricing Teaser */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
+          <Animate variant="scaleIn">
           <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-3xl border border-border/60 p-10 md:p-16 text-center space-y-8">
             <div className="inline-block bg-primary/20 text-primary rounded-full px-4 py-1.5 text-sm font-semibold">Zero Risk</div>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">Start Free for 30 Days</h2>
@@ -616,11 +636,13 @@ export default function Home() {
             </Link>
             <p className="text-xs text-muted-foreground">After trial, pricing is tailored to your institution size &amp; needs.</p>
           </div>
+          </Animate>
         </div>
       </section>
 
       {/* Call to Action */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-brand-gradient text-primary-foreground">
+        <Animate variant="fadeIn">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <h2 className="text-3xl md:text-4xl font-bold">Ready to Strengthen Your Alumni Ecosystem?</h2>
           <p className="text-lg opacity-90">
@@ -641,6 +663,7 @@ export default function Home() {
           </div>
           <p className="text-sm opacity-70">No credit card required · Setup in under 10 minutes · Dedicated onboarding support</p>
         </div>
+        </Animate>
       </section>
 
       <Footer />
