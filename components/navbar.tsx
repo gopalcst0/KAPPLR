@@ -10,39 +10,39 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="sticky top-0 z-50 px-4 sm:px-6 lg:px-10 pt-4 pb-2 bg-slate-50">
+    <div className="sticky top-0 z-50 px-4 sm:px-6 lg:px-10 pt-4 pb-2 bg-[#0a0518]">
       {/* Floating card navbar */}
-      <nav className="max-w-7xl mx-auto bg-white rounded-2xl shadow-md border border-white/80 px-5 sm:px-8">
+      <nav className="max-w-7xl mx-auto bg-white/8 backdrop-blur-xl rounded-2xl border border-white/12 px-5 sm:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Image src="/logo-removebg.png" alt="KAPPLR" width={300} height={100} className="h-24 w-auto object-contain" priority />
+            <Image src="/logo-removebg.png" alt="KAPPLR" width={300} height={100} className="h-24 w-auto object-contain brightness-0 invert" priority />
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-0.5">
             <Link href="/features">
-              <Button variant="ghost" className="text-muted-foreground hover:text-foreground rounded-xl text-sm cursor-pointer">
+              <Button variant="ghost" className="text-white/60 hover:text-white hover:bg-white/8 rounded-xl text-sm cursor-pointer">
                 Features
               </Button>
             </Link>
             <Link href="/use-cases">
-              <Button variant="ghost" className="text-muted-foreground hover:text-foreground rounded-xl text-sm cursor-pointer">
+              <Button variant="ghost" className="text-white/60 hover:text-white hover:bg-white/8 rounded-xl text-sm cursor-pointer">
                 Use Cases
               </Button>
             </Link>
             <Link href="/pricing">
-              <Button variant="ghost" className="text-muted-foreground hover:text-foreground rounded-xl text-sm cursor-pointer">
+              <Button variant="ghost" className="text-white/60 hover:text-white hover:bg-white/8 rounded-xl text-sm cursor-pointer">
                 Pricing
               </Button>
             </Link>
             <Link href="/contact">
-              <Button variant="ghost" className="text-muted-foreground hover:text-foreground rounded-xl text-sm cursor-pointer">
+              <Button variant="ghost" className="text-white/60 hover:text-white hover:bg-white/8 rounded-xl text-sm cursor-pointer">
                 Contact
               </Button>
             </Link>
             <Link href="/blog">
-              <Button variant="ghost" className="text-muted-foreground hover:text-foreground rounded-xl text-sm cursor-pointer">
+              <Button variant="ghost" className="text-white/60 hover:text-white hover:bg-white/8 rounded-xl text-sm cursor-pointer">
                 Blogs
               </Button>
             </Link>
@@ -60,12 +60,12 @@ export function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-xl hover:bg-muted"
+            className="md:hidden p-2 rounded-xl hover:bg-white/10"
           >
             {isOpen ? (
-              <X className="w-5 h-5 text-foreground" />
+              <X className="w-5 h-5 text-white" />
             ) : (
-              <Menu className="w-5 h-5 text-foreground" />
+              <Menu className="w-5 h-5 text-white" />
             )}
           </button>
         </div>
@@ -73,7 +73,7 @@ export function Navbar() {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden max-w-7xl mx-auto mt-2 bg-white rounded-2xl shadow-lg border border-border/40 px-4 py-4 space-y-1">
+        <div className="md:hidden max-w-7xl mx-auto mt-2 bg-white/8 backdrop-blur-xl rounded-2xl border border-white/12 px-4 py-4 space-y-1">
           {[
             { label: 'Features', href: '/features' },
             { label: 'Use Cases', href: '/use-cases' },
@@ -84,13 +84,13 @@ export function Navbar() {
             <Link key={href} href={href} onClick={() => setIsOpen(false)}>
               <Button
                 variant="ghost"
-                className="w-full justify-start text-foreground hover:text-accent-foreground rounded-xl cursor-pointer"
+                className="w-full justify-start text-white/70 hover:text-white hover:bg-white/10 rounded-xl cursor-pointer"
               >
                 {label}
               </Button>
             </Link>
           ))}
-          <div className="pt-2 border-t border-border space-y-2">
+          <div className="pt-2 border-t border-white/10 space-y-2">
             <Link href="/pricing" onClick={() => setIsOpen(false)}>
               <Button className="w-full bg-brand-gradient hover:opacity-90 text-white rounded-full font-semibold">
                 Get Started Free
