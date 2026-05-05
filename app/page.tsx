@@ -14,7 +14,7 @@ import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { ArrowRight, Users, TrendingUp, Award, Zap, CheckCircle2, Star, MessageSquare, Mail, Smartphone, BarChart3, Shield, Handshake, Settings } from 'lucide-react'
+import { ArrowRight, Users, TrendingUp, Award, Zap, CheckCircle2, Star, MessageSquare, Mail, Smartphone, BarChart3, Shield, Handshake, Settings, Heart } from 'lucide-react'
 import Image from 'next/image'
 import { Animate, Stagger } from '@/components/animate'
 
@@ -62,6 +62,13 @@ export default function Home() {
                 <span className="text-brand-gradient">Your Greatest</span><br />
                 Asset
               </h1>
+            </Animate>
+
+            {/* Tagline */}
+            <Animate variant="fadeUp" delay={0.18}>
+              <p className="text-sm font-semibold text-brand-gradient tracking-wide">
+                Turn your alumni into contributors, mentors, and brand ambassadors
+              </p>
             </Animate>
 
             {/* Sub-headline */}
@@ -227,7 +234,12 @@ export default function Home() {
 
       {/* Social Proof Section */}
       <section className="py-14 px-4 sm:px-6 lg:px-8 bg-[#0a0518] border-y border-white/8">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto space-y-8">
+          <Animate variant="fadeUp" className="text-center">
+            <p className="text-xs font-semibold text-white/35 uppercase tracking-[0.2em]">
+              From the house of <span className="text-white/60">MyLeading Campus</span> — Trusted by academic leaders across India
+            </p>
+          </Animate>
           <Stagger className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6" childVariant="fadeUp">
             {[
               { icon: Users,     value: '1000+',  label: 'Alumni Reconnected Monthly', dot: 'bg-violet-400' },
@@ -245,96 +257,179 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Key Benefits */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0a0518] relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-violet-700/15 blur-[100px] pointer-events-none" />
+      {/* Why KAPPLR */}
+      <section className="py-28 px-4 sm:px-6 lg:px-8 bg-[#0a0518] relative overflow-hidden">
+        {/* Background glows */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full bg-violet-700/20 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-cyan-700/10 blur-[100px] pointer-events-none" />
+        {/* Subtle grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+
         <div className="max-w-7xl mx-auto relative z-10">
-          <Animate variant="fadeUp" className="text-center mb-16 space-y-4">
-            <div className="inline-block bg-white/8 border border-white/12 text-white/70 rounded-full px-4 py-1.5 text-sm font-medium">Why KAPPLR</div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Why Schools Choose KAPPLR</h2>
-            <p className="text-lg text-white/45 max-w-2xl mx-auto">
-              Built specifically for academic institutions to maximize alumni engagement and institutional impact.
+          <Animate variant="fadeUp" className="text-center mb-16 space-y-5">
+            <div className="inline-flex items-center gap-2 bg-white/8 border border-violet-500/30 text-violet-300 rounded-full px-5 py-2 text-sm font-semibold uppercase tracking-widest">
+              <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
+              Why KAPPLR
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+              Why Institutes Choose{" "}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-purple-300 to-cyan-400">
+                KAPPLR
+              </span>
+            </h2>
+            <p className="text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
+              Purpose-built for Indian educational institutions — everything your alumni team needs, nothing you don&apos;t.
             </p>
           </Animate>
 
-          <Animate variant="fadeUp" delay={0.15}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {[
-              { icon: Users,     tag: 'Directory',  tagColor: 'bg-violet-500/20 text-violet-300',  iconBg: 'bg-violet-500', title: 'Dynamic Alumni Directory',  description: 'Keep track of all alumni with their career details, interests, and engagement history in one unified platform.',    stat: '10,000+ profiles', statLabel: 'managed on average' },
-              { icon: TrendingUp,tag: 'Placement',  tagColor: 'bg-teal-500/20 text-teal-300',     iconBg: 'bg-teal-500',   title: 'Placement Hub',              description: 'Connect graduates with job opportunities and help employers find talented alumni for roles.',                      stat: '3x faster',        statLabel: 'placement matching' },
-              { icon: Award,     tag: 'Fundraising',tagColor: 'bg-amber-500/20 text-amber-300',   iconBg: 'bg-amber-500',  title: 'Fundraising Module',         description: 'Unlock giving potential with targeted campaigns, tracking, and recognition for alumni donors.',                   stat: '₹10Cr+',           statLabel: 'raised across institutions' },
-              { icon: Zap,       tag: 'Events',     tagColor: 'bg-purple-500/20 text-purple-300', iconBg: 'bg-purple-500', title: 'Event Management',           description: 'Organize reunions, webinars, and networking events. Build community through meaningful connections.',             stat: '2x attendance',    statLabel: 'vs traditional methods' },
-              { icon: Handshake, tag: 'Mentorship', tagColor: 'bg-cyan-500/20 text-cyan-300',     iconBg: 'bg-cyan-500',   title: 'Mentorship Program',         description: 'Facilitate mentorship between students and alumni to support career growth and development.',                  stat: '500+ matches',     statLabel: 'per institution/year' },
-              { icon: Shield,    tag: 'Compliance', tagColor: 'bg-green-500/20 text-green-300',   iconBg: 'bg-green-500',  title: 'Accreditation Support',      description: 'Generate compliance reports and demonstrate institutional impact for accreditation bodies.',                    stat: 'NAAC & NBA',       statLabel: 'ready reports' },
-            ].map((benefit, idx) => {
-              const Icon = benefit.icon
-              return (
-                <div key={idx} className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden hover:bg-white/8 hover:border-white/20 transition-all group">
-                  <div className="h-1 bg-brand-gradient" />
-                  <div className="p-6 space-y-4">
-                    <div className="flex items-center justify-between">
-                      <span className={`text-xs font-semibold px-3 py-1 rounded-full ${benefit.tagColor}`}>{benefit.tag}</span>
-                      <div className={`w-10 h-10 ${benefit.iconBg} rounded-xl flex items-center justify-center flex-shrink-0`}>
-                        <Icon className="w-5 h-5 text-white" />
-                      </div>
-                    </div>
-                    <div>
-                      <h3 className="text-base font-bold text-white mb-1.5">{benefit.title}</h3>
-                      <p className="text-sm text-white/45 leading-relaxed">{benefit.description}</p>
-                    </div>
-                    <div className="pt-3 border-t border-white/8 flex items-center justify-between">
-                      <div>
-                        <div className="text-base font-bold text-brand-gradient">{benefit.stat}</div>
-                        <div className="text-xs text-white/35">{benefit.statLabel}</div>
-                      </div>
-                      <ArrowRight className="w-4 h-4 text-white/30 group-hover:text-white/70 group-hover:translate-x-1 transition-all" />
-                    </div>
+          {/* MLC Trust Banner */}
+          <Animate variant="fadeUp" className="mb-14">
+            <div className="relative rounded-3xl p-[1px] bg-gradient-to-r from-violet-500/50 via-purple-500/30 to-cyan-500/40 overflow-hidden">
+              <div className="relative bg-[#0f0a2a] rounded-3xl px-8 py-7 overflow-hidden">
+                <div className="absolute top-0 right-0 w-72 h-72 rounded-full bg-violet-600/15 blur-3xl pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-cyan-600/10 blur-2xl pointer-events-none" />
+                <div className="relative flex flex-col lg:flex-row items-center gap-8">
+                  {/* Left: MLC info */}
+                  <div className="flex-1 space-y-2 text-center lg:text-left">
+                    <p className="text-[11px] font-bold text-violet-400 uppercase tracking-[0.3em]">From the house of</p>
+                    <h3 className="text-2xl font-extrabold text-white">MyLeading Campus</h3>
+                    <p className="text-sm text-white/50 leading-relaxed max-w-sm">
+                      Trusted by thousands of schools across India — now bringing that expertise to alumni engagement.
+                    </p>
                   </div>
+                  {/* Divider */}
+                  <div className="hidden lg:block w-px h-20 bg-white/10 flex-shrink-0" />
+                  {/* Stats */}
+                  <div className="flex flex-wrap justify-center lg:justify-start gap-6 flex-1">
+                    {[
+                      { stat: '50+',    label: 'Institutions',       color: 'text-violet-400' },
+                      { stat: '1000+',  label: 'Alumni / Month',     color: 'text-cyan-400' },
+                      { stat: '₹10Cr+', label: 'Funds Facilitated',  color: 'text-emerald-400' },
+                      { stat: '95%',    label: 'Satisfaction Rate',  color: 'text-pink-400' },
+                    ].map(({ stat, label, color }) => (
+                      <div key={label} className="text-center">
+                        <div className={`text-2xl font-black ${color}`}>{stat}</div>
+                        <div className="text-[11px] text-white/40 font-medium mt-0.5">{label}</div>
+                      </div>
+                    ))}
+                  </div>
+                  {/* Divider */}
+                  <div className="hidden lg:block w-px h-20 bg-white/10 flex-shrink-0" />
+                  {/* CTA */}
+                  <div className="flex-shrink-0">
+                    <Link href="/pricing">
+                      <Button className="bg-gradient-to-r from-violet-600 to-cyan-500 hover:from-violet-500 hover:to-cyan-400 text-white rounded-xl px-6 font-semibold shadow-lg shadow-violet-900/40 group">
+                        Start Free Trial
+                        <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Animate>
+
+          {/* 6 feature cards — 3-column grid */}
+          <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              { icon: Zap,           title: 'Easy to Use Platform',      desc: 'Intuitive dashboard designed for non-technical staff. Go live in minutes — no training needed.',      color: 'from-yellow-500 to-orange-500' },
+              { icon: Settings,      title: 'Fully Customizable Portal', desc: 'Brand it as your own — custom fields, logo, colours, and workflows tailored to your institution.',     color: 'from-violet-500 to-purple-600' },
+              { icon: MessageSquare, title: 'WhatsApp, Email & SMS',      desc: 'Reach alumni on every channel they already use. Bulk messaging and automated campaigns built-in.',     color: 'from-green-500 to-emerald-600' },
+              { icon: Smartphone,    title: 'Alumni Mobile App',          desc: 'Dedicated mobile app for alumni to stay connected, access jobs, and join events on the go.',           color: 'from-blue-500 to-cyan-500' },
+              { icon: Shield,        title: 'Secure Cloud-Based System', desc: 'Enterprise-grade security, daily backups, and GDPR-compliant data storage you can always trust.',      color: 'from-red-500 to-rose-600' },
+              { icon: Star,          title: 'Best-in-Class Support',      desc: 'Dedicated onboarding, live chat support, and a team that truly understands Indian education.',          color: 'from-pink-500 to-fuchsia-600' },
+            ].map((item, idx) => {
+              const Icon = item.icon
+              return (
+                <div key={idx} className="group relative flex flex-col gap-4 p-6 bg-white/4 border border-white/8 rounded-2xl hover:bg-white/7 hover:border-white/15 hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+                  <div className={`w-12 h-12 bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg`}>
+                    <Icon className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-white mb-2">{item.title}</h3>
+                    <p className="text-sm text-white/45 leading-relaxed">{item.desc}</p>
+                  </div>
+                  {/* bottom accent line on hover */}
+                  <div className={`absolute bottom-0 left-0 h-0.5 w-0 group-hover:w-full bg-gradient-to-r ${item.color} transition-all duration-500`} />
                 </div>
               )
             })}
-          </div>
-          </Animate>
+          </Stagger>
         </div>
       </section>
 
       {/* Alumni Community Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0d0720] relative overflow-hidden">
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-teal-600/15 blur-[100px] pointer-events-none" />
+      <section className="py-28 px-4 sm:px-6 lg:px-8 bg-[#0d0720] relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-teal-600/12 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[350px] h-[350px] rounded-full bg-violet-700/12 blur-[100px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <Animate variant="slideLeft" className="space-y-6">
-              <div className="inline-block bg-white/8 border border-white/12 text-white/60 rounded-full px-4 py-1.5 text-sm font-medium">Community</div>
-              <h2 className="text-3xl md:text-4xl font-bold text-white">Build a Connected Alumni Community</h2>
-              <p className="text-lg text-white/45">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <Animate variant="slideLeft" className="space-y-8">
+              <div className="inline-flex items-center gap-2 bg-white/8 border border-teal-500/30 text-teal-300 rounded-full px-5 py-2 text-sm font-semibold uppercase tracking-widest">
+                <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
+                Community
+              </div>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+                Build a{" "}
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-cyan-300 to-violet-400">
+                  Connected
+                </span>
+                {" "}Alumni Community
+              </h2>
+              <p className="text-lg text-white/50 leading-relaxed">
                 Your alumni are your institution&apos;s greatest advocates. KAPPLR makes it easy to keep them engaged, connected, and invested in your success.
               </p>
-              <ul className="space-y-3">
-                {['Strengthen institutional bonds', 'Create lasting relationships', 'Unlock career opportunities', 'Drive fundraising success'].map((item, idx) => (
-                  <li key={idx} className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full bg-brand-gradient flex items-center justify-center flex-shrink-0">
-                      <CheckCircle2 className="w-3 h-3 text-white" />
+              <ul className="space-y-4">
+                {[
+                  { text: 'Strengthen institutional bonds',  color: 'from-teal-500 to-cyan-500' },
+                  { text: 'Create lasting relationships',    color: 'from-violet-500 to-purple-500' },
+                  { text: 'Unlock career opportunities',     color: 'from-blue-500 to-cyan-500' },
+                  { text: 'Drive fundraising success',       color: 'from-emerald-500 to-teal-500' },
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-center gap-4 group">
+                    <div className={`w-6 h-6 rounded-lg bg-gradient-to-br ${item.color} flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform`}>
+                      <CheckCircle2 className="w-3.5 h-3.5 text-white" />
                     </div>
-                    <span className="text-white/70">{item}</span>
+                    <span className="text-white/70 group-hover:text-white transition-colors font-medium">{item.text}</span>
                   </li>
                 ))}
               </ul>
               <Link href="/use-cases">
-                <Button size="lg" className="rounded-full bg-white/10 hover:bg-white/15 border border-white/20 text-white backdrop-blur-sm">
-                  Learn More <ArrowRight className="ml-2 w-4 h-4" />
+                <Button size="lg" className="rounded-full bg-gradient-to-r from-teal-600 to-cyan-500 hover:from-teal-500 hover:to-cyan-400 text-white font-semibold shadow-lg shadow-teal-900/40 group">
+                  Learn More <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
             </Animate>
+
             <Animate variant="slideRight">
               <div className="relative">
-                <div className="absolute inset-0 bg-brand-gradient opacity-15 blur-3xl rounded-3xl pointer-events-none" />
-                <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/alumni-header-1-nDRXimGOHF9MC0fpDacvoGpjXSrNFL.jpg"
-                  alt="Alumni community - diverse people from different generations"
-                  width={500}
-                  height={500}
-                  className="relative rounded-2xl w-full h-full object-cover border border-white/10"
-                />
+                {/* Gradient border frame */}
+                <div className="absolute -inset-0.5 bg-gradient-to-br from-teal-500/40 via-violet-500/20 to-cyan-500/30 rounded-3xl blur-sm" />
+                <div className="relative rounded-3xl overflow-hidden border border-white/10">
+                  <Image
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/alumni-header-1-nDRXimGOHF9MC0fpDacvoGpjXSrNFL.jpg"
+                    alt="Alumni community"
+                    width={600}
+                    height={500}
+                    className="w-full h-[420px] object-cover"
+                  />
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0d0720]/80 via-transparent to-transparent" />
+                  {/* Floating stat chips */}
+                  <div className="absolute bottom-5 left-5 right-5 flex gap-3">
+                    {[
+                      { val: '10K+', label: 'Alumni Connected', color: 'text-teal-400' },
+                      { val: '200+', label: 'Events Hosted',    color: 'text-violet-400' },
+                      { val: '98%',  label: 'Engagement Rate',  color: 'text-cyan-400' },
+                    ].map(({ val, label, color }) => (
+                      <div key={label} className="flex-1 bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-3 text-center">
+                        <div className={`text-lg font-black ${color}`}>{val}</div>
+                        <div className="text-[10px] text-white/50 font-medium mt-0.5">{label}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </Animate>
           </div>
@@ -342,354 +437,581 @@ export default function Home() {
       </section>
 
       {/* How It Works — Teaser */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#0a0518] relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] rounded-full bg-purple-700/10 blur-[100px] pointer-events-none" />
+      <section className="py-28 px-4 sm:px-6 lg:px-8 bg-[#0a0518] relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-violet-700/15 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-cyan-700/10 blur-[100px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
         <div className="max-w-6xl mx-auto relative z-10">
-          <Animate variant="fadeUp" className="text-center mb-12 space-y-3">
-            <div className="inline-block bg-white/8 border border-white/12 text-white/60 rounded-full px-4 py-1.5 text-sm font-medium">Simple Process</div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Up &amp; Running in 4 Steps</h2>
-            <p className="text-white/45 max-w-xl mx-auto">
+          <Animate variant="fadeUp" className="text-center mb-16 space-y-5">
+            <div className="inline-flex items-center gap-2 bg-white/8 border border-violet-500/30 text-violet-300 rounded-full px-5 py-2 text-sm font-semibold uppercase tracking-widest">
+              <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
+              Simple Process
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+              Up &amp; Running in{" "}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-purple-300 to-cyan-400">4 Steps</span>
+            </h2>
+            <p className="text-lg text-white/50 max-w-xl mx-auto">
               Launch your alumni platform in minutes — no technical expertise required.
             </p>
           </Animate>
 
-          {(() => {
-            const steps = [
-              { icon: Settings, title: 'Create Your Portal', desc: "Set up a branded, custom portal with your institution's logo, colours, and fields in minutes.", detail: 'Step 1 · Portal Setup', meta: 'Takes ~5 minutes', status: 'done' },
-              { icon: Users,    title: 'Import Alumni',       desc: 'Upload your existing alumni list via Excel or CSV, or invite alumni directly by email.',          detail: 'Step 2 · Data Import',  meta: 'CSV & Excel supported', status: 'done' },
-              { icon: Zap,      title: 'Launch Engagement',   desc: 'Send campaigns via WhatsApp, Email, and SMS. Host events and kick off fundraising drives.',       detail: 'Step 3 · Go Live',      meta: 'All channels ready',    status: 'active' },
-              { icon: BarChart3,title: 'Track Impact',        desc: 'Monitor engagement metrics and generate NAAC / NBA-ready accreditation reports instantly.',       detail: 'Step 4 · Analytics',    meta: 'NAAC & NBA ready',      status: 'upcoming' },
-            ]
-            return (
-              <>
-                {/* Stepper row */}
-                <div className="flex items-center justify-between mb-8 px-4 md:px-16">
-                  {steps.map((s, idx) => {
-                    const Icon = s.icon
-                    const isDone = s.status === 'done'
-                    const isActive = s.status === 'active'
-                    return (
-                      <div key={idx} className="flex-1 flex items-center">
-                        <div className="flex flex-col items-center gap-2 flex-shrink-0">
-                          <div className={`w-12 h-12 rounded-full flex items-center justify-center border-2 transition-all
-                            ${isDone ? 'bg-white/10 border-violet-500' : ''}
-                            ${isActive ? 'bg-brand-gradient border-transparent shadow-lg shadow-purple-900 scale-110' : ''}
-                            ${s.status === 'upcoming' ? 'bg-white/5 border-white/15' : ''}
-                          `}>
-                            {isDone
-                              ? <CheckCircle2 className="w-6 h-6 text-violet-400" />
-                              : <Icon className={`w-6 h-6 ${isActive ? 'text-white' : 'text-white/25'}`} />
-                            }
-                          </div>
-                          <span className={`text-xs font-semibold text-center leading-tight hidden sm:block
-                            ${isDone ? 'text-violet-400' : ''}
-                            ${isActive ? 'text-white' : ''}
-                            ${s.status === 'upcoming' ? 'text-white/25' : ''}
-                          `}>
-                            {s.title}
-                          </span>
-                        </div>
-                        {idx < steps.length - 1 && (
-                          <div className={`flex-1 h-0.5 mx-2 rounded-full ${idx < 2 ? 'bg-violet-500' : 'bg-white/10'}`} />
-                        )}
-                      </div>
-                    )
-                  })}
-                </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {[
+              { icon: Settings,  title: 'Create Your Portal',  desc: "Set up a branded portal with your institution's logo, colours, and custom fields in minutes.", tag: '~5 minutes',          num: '01', colors: 'from-violet-500 to-purple-600', glow: 'bg-violet-600/20' },
+              { icon: Users,     title: 'Import Alumni',        desc: 'Upload your existing alumni list via Excel or CSV, or invite alumni directly by email.',         tag: 'CSV & Excel',         num: '02', colors: 'from-blue-500 to-cyan-500',    glow: 'bg-blue-600/20' },
+              { icon: Zap,       title: 'Launch Engagement',    desc: 'Send campaigns via WhatsApp, Email, and SMS. Host events and kick off fundraising drives.',      tag: 'All channels',        num: '03', colors: 'from-emerald-500 to-teal-500', glow: 'bg-emerald-600/20' },
+              { icon: BarChart3, title: 'Track Impact',         desc: 'Monitor engagement metrics and generate NAAC / NBA-ready accreditation reports instantly.',      tag: 'NAAC & NBA ready',    num: '04', colors: 'from-pink-500 to-fuchsia-600', glow: 'bg-pink-600/20' },
+            ].map((step, idx) => {
+              const Icon = step.icon
+              return (
+                <Animate key={idx} variant="fadeUp">
+                  <div className="group relative flex flex-col gap-5 p-6 bg-white/4 border border-white/8 rounded-2xl hover:bg-white/7 hover:border-white/15 hover:-translate-y-1 transition-all duration-300 overflow-hidden h-full">
+                    {/* Big number watermark */}
+                    <span className="absolute -top-2 -right-1 text-8xl font-black text-white/3 select-none leading-none group-hover:text-white/5 transition-colors">{step.num}</span>
+                    {/* Icon */}
+                    <div className={`w-13 h-13 bg-gradient-to-br ${step.colors} rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg w-12 h-12`}>
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1 space-y-2">
+                      <h3 className="text-base font-bold text-white">{step.title}</h3>
+                      <p className="text-sm text-white/45 leading-relaxed">{step.desc}</p>
+                    </div>
+                    {/* Tag */}
+                    <div className={`inline-flex items-center gap-1.5 text-[11px] font-semibold px-3 py-1 rounded-full bg-white/6 border border-white/10 text-white/50 self-start`}>
+                      <span className={`w-1.5 h-1.5 rounded-full bg-gradient-to-br ${step.colors}`} />
+                      {step.tag}
+                    </div>
+                    {/* Bottom accent */}
+                    <div className={`absolute bottom-0 left-0 h-0.5 w-0 group-hover:w-full bg-gradient-to-r ${step.colors} transition-all duration-500`} />
+                  </div>
+                </Animate>
+              )
+            })}
+          </div>
 
-                {/* Cards row */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {steps.map((s, idx) => {
-                    const Icon = s.icon
-                    const isDone = s.status === 'done'
-                    const isActive = s.status === 'active'
-                    const isUpcoming = s.status === 'upcoming'
-                    return (
-                      <div key={idx} className={`rounded-2xl p-5 flex flex-col gap-4 transition-all
-                        ${isActive ? 'bg-white/10 border-2 border-violet-500/60 shadow-lg shadow-purple-900/40' : 'bg-white/5 border border-white/8'}
-                        ${isUpcoming ? 'opacity-50' : ''}
-                      `}>
-                        <div className="flex items-start justify-between gap-2">
-                          <span className={`text-xs font-semibold ${isDone ? 'text-violet-400' : isActive ? 'text-violet-300' : 'text-white/25'}`}>
-                            {s.detail}
-                          </span>
-                          <div className={`w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0
-                            ${isDone ? 'bg-violet-500/20' : isActive ? 'bg-brand-gradient' : 'bg-white/5'}
-                          `}>
-                            <Icon className={`w-4 h-4 ${isDone ? 'text-violet-400' : isActive ? 'text-white' : 'text-white/25'}`} />
-                          </div>
-                        </div>
-                        <div className="flex-1 space-y-1">
-                          <p className={`text-sm leading-relaxed ${isUpcoming ? 'text-white/25' : 'text-white/70'}`}>{s.desc}</p>
-                          <p className={`text-xs ${isUpcoming ? 'text-white/20' : 'text-white/35'}`}>{s.meta}</p>
-                        </div>
-                        <div className="pt-2 border-t border-white/8">
-                          {isDone && (
-                            <span className="flex items-center gap-1.5 text-xs text-violet-400 font-medium">
-                              <CheckCircle2 className="w-3.5 h-3.5" /> Completed
-                            </span>
-                          )}
-                          {isActive && (
-                            <Link href="/pricing">
-                              <button className="w-full text-sm text-white bg-brand-gradient rounded-xl py-2 font-semibold hover:opacity-90 transition-opacity">
-                                Start Now →
-                              </button>
-                            </Link>
-                          )}
-                          {isUpcoming && (
-                            <span className="text-xs text-white/20 font-medium">Coming up next</span>
-                          )}
-                        </div>
-                      </div>
-                    )
-                  })}
-                </div>
-              </>
-            )
-          })()}
-
-          <div className="text-center mt-10">
+          <div className="text-center">
             <Link href="/how-it-works">
-              <Button size="lg" className="rounded-full bg-white/8 hover:bg-white/12 border border-white/15 text-white">
-                See Detailed Walkthrough <ArrowRight className="ml-2 w-4 h-4" />
+              <Button size="lg" className="rounded-full bg-gradient-to-r from-violet-600 to-cyan-500 hover:from-violet-500 hover:to-cyan-400 text-white font-semibold shadow-lg shadow-violet-900/40 group">
+                See Detailed Walkthrough <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Feature Spotlight */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0d0720] relative overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full bg-purple-600/15 blur-[80px] pointer-events-none" />
+      {/* Features */}
+      <section className="py-28 px-4 sm:px-6 lg:px-8 bg-[#0d0720] relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] rounded-full bg-purple-600/15 blur-[100px] pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-cyan-700/8 blur-[100px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
         <div className="max-w-7xl mx-auto relative z-10">
-          <Animate variant="fadeUp" className="text-center mb-16 space-y-4">
-            <div className="inline-block bg-white/8 border border-white/12 text-white/60 rounded-full px-4 py-1.5 text-sm font-medium">Platform Highlights</div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Everything Alumni Engagement Needs</h2>
+          <Animate variant="fadeUp" className="text-center mb-16 space-y-5">
+            <div className="inline-flex items-center gap-2 bg-white/8 border border-purple-500/30 text-purple-300 rounded-full px-5 py-2 text-sm font-semibold uppercase tracking-widest">
+              <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
+              Platform Features
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+              Everything You Need to{" "}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-violet-300 to-cyan-400">
+                Manage Alumni
+              </span>
+            </h2>
+            <p className="text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
+              A complete alumni management system for India — from registration to NAAC accreditation reports.
+            </p>
           </Animate>
-          <Animate variant="fadeUp" delay={0.1}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 [grid-auto-rows:1fr]">
             {[
-              { icon: Handshake, title: 'Mentorship & Placement', desc: 'Match students with alumni mentors automatically. Post jobs, internships, and let alumni refer candidates directly.',       href: '/features' },
-              { icon: BarChart3, title: 'Real-Time Analytics',    desc: 'Track engagement rates, donations, event attendance, and generate NAAC/NBA-ready accreditation reports instantly.',          href: '/features' },
-              { icon: Shield,    title: 'Enterprise-Grade Security', desc: 'Data encrypted at rest and in transit. GDPR-compliant. Role-based access controls for admins and alumni.',             href: '/features' },
+              { icon: Users,         title: 'Alumni Database',         desc: 'Auto-updating, searchable database to locate alumni by batch, location, or career.',                     color: 'from-violet-500 to-purple-600',  accent: 'violet-500' },
+              { icon: Settings,      title: 'Registration Portal',     desc: 'Branded self-registration portal for alumni to update their profiles and stay connected in seconds.',   color: 'from-blue-500 to-cyan-500',      accent: 'blue-500' },
+              { icon: MessageSquare, title: 'Communication Tools',     desc: 'Email, WhatsApp & SMS from one unified dashboard with personalisation and merge tags.',                 color: 'from-green-500 to-emerald-600',  accent: 'green-500' },
+              { icon: Zap,           title: 'Event Management',        desc: 'Manage reunions, webinars, and networking events with automated RSVP and attendance tracking.',         color: 'from-yellow-500 to-orange-500',  accent: 'yellow-500' },
+              { icon: Award,         title: 'Fundraising & Donations', desc: 'Run targeted fundraising campaigns, track donors, and recognise contributors transparently.',          color: 'from-pink-500 to-rose-600',      accent: 'pink-500' },
+              { icon: Handshake,     title: 'Job & Placement Support', desc: 'Connect alumni with opportunities and help them mentor current students into their careers.',           color: 'from-teal-500 to-cyan-600',      accent: 'teal-500' },
+              { icon: TrendingUp,    title: 'Alumni Directory',        desc: 'Advanced, filterable directory searchable by year, department, industry, and location.',               color: 'from-indigo-500 to-violet-600',  accent: 'indigo-500' },
+              { icon: BarChart3,     title: 'Analytics Dashboard',     desc: 'Real-time engagement metrics, fundraising KPIs, and NAAC / NBA-ready accreditation reports.',         color: 'from-fuchsia-500 to-pink-600',   accent: 'fuchsia-500' },
             ].map((item, idx) => {
               const Icon = item.icon
               return (
-                <div key={idx} className="p-8 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/8 hover:border-white/20 transition-all space-y-4 group">
-                  <div className="w-14 h-14 bg-brand-gradient rounded-2xl flex items-center justify-center">
-                    <Icon className="w-7 h-7 text-white" />
+                <div key={idx} className="group relative overflow-hidden rounded-2xl bg-white/4 border border-white/8 hover:border-white/20 transition-all duration-300 hover:-translate-y-1.5 flex flex-col h-full min-h-[240px]">
+                  {/* Top gradient bar */}
+                  <div className={`h-1 w-full bg-gradient-to-r ${item.color} flex-shrink-0`} />
+                  {/* Corner glow */}
+                  <div className={`absolute top-0 right-0 w-32 h-32 rounded-full bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-8 blur-3xl transition-opacity duration-500 pointer-events-none`} />
+                  <div className="p-6 flex flex-col gap-4 flex-1">
+                    {/* Icon row */}
+                    <div className="flex items-center justify-between">
+                      <div className={`w-11 h-11 bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center shadow-lg flex-shrink-0`}>
+                        <Icon className="w-5 h-5 text-white" />
+                      </div>
+                      <ArrowRight className="w-4 h-4 text-white/15 group-hover:text-white/50 group-hover:translate-x-0.5 transition-all duration-300" />
+                    </div>
+                    {/* Text */}
+                    <div className="flex-1 space-y-1.5">
+                      <h3 className="text-sm font-bold text-white">{item.title}</h3>
+                      <p className="text-xs text-white/45 leading-relaxed">{item.desc}</p>
+                    </div>
+                    {/* Learn more — pinned to bottom */}
+                    <Link href="/features" className={`text-xs font-semibold bg-clip-text text-transparent bg-gradient-to-r ${item.color} inline-flex items-center gap-1 w-fit mt-auto`}>
+                      Learn more →
+                    </Link>
                   </div>
-                  <h3 className="text-xl font-semibold text-white">{item.title}</h3>
-                  <p className="text-white/45">{item.desc}</p>
-                  <Link href={item.href} className="inline-flex items-center text-violet-400 text-sm font-medium hover:text-violet-300 transition-colors">
-                    Learn more <ArrowRight className="ml-1 w-3.5 h-3.5" />
-                  </Link>
                 </div>
               )
             })}
-          </div>
+          </Stagger>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="py-28 px-4 sm:px-6 lg:px-8 bg-[#0a0518] relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-violet-700/15 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-teal-600/10 blur-[100px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+        <div className="max-w-7xl mx-auto relative z-10">
+          <Animate variant="fadeUp" className="text-center mb-16 space-y-5">
+            <div className="inline-flex items-center gap-2 bg-white/8 border border-teal-500/30 text-teal-300 rounded-full px-5 py-2 text-sm font-semibold uppercase tracking-widest">
+              <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
+              Why It Matters
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+              Benefits of{" "}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-cyan-300 to-violet-400">
+                Alumni Management
+              </span>
+              <br className="hidden sm:block" />Software in India
+            </h2>
+            <p className="text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
+              NAAC alumni data management, accreditation reports, and year-round engagement — all automated.
+            </p>
+          </Animate>
+
+          {/* 5 pillar cards */}
+          <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-6 [grid-auto-rows:1fr]">
+            {[
+              { icon: Users,      num: '01', title: 'Improve Alumni Engagement',         desc: 'Personalised outreach, events, and digital community spaces to keep alumni active year-round.',           tag: 'Engagement',  color: 'from-violet-500 to-purple-600',  text: 'text-violet-400',  border: 'border-violet-500/25', glow: 'bg-violet-600/20' },
+              { icon: TrendingUp, num: '02', title: 'Increase Institutional Reputation', desc: 'Active alumni networks signal quality to ranking bodies and accreditors, elevating your prestige.',        tag: 'Reputation',  color: 'from-blue-500 to-cyan-500',      text: 'text-cyan-400',    border: 'border-cyan-500/25',   glow: 'bg-cyan-600/20' },
+              { icon: Award,      num: '03', title: 'Enable Fundraising',                desc: 'Convert alumni into donors with streamlined campaigns, recognition tools, and transparent tracking.',      tag: 'Fundraising', color: 'from-emerald-500 to-teal-600',   text: 'text-emerald-400', border: 'border-emerald-500/25',glow: 'bg-emerald-600/20' },
+              { icon: Handshake,  num: '04', title: 'Boost Student Placements',          desc: 'Open job, internship, and mentorship doors for current students via alumni industry connections.',         tag: 'Placements',  color: 'from-amber-500 to-orange-500',   text: 'text-amber-400',   border: 'border-amber-500/25',  glow: 'bg-amber-600/20' },
+              { icon: Heart,      num: '05', title: 'Build Lifelong Relationships',      desc: 'Turn graduates into lifelong brand ambassadors who champion your institution nationwide.',                 tag: 'Retention',   color: 'from-pink-500 to-fuchsia-600',   text: 'text-pink-400',    border: 'border-pink-500/25',   glow: 'bg-pink-600/20' },
+            ].map((b, idx) => {
+              const Icon = b.icon
+              return (
+                <div key={idx} className={`group relative overflow-hidden rounded-2xl bg-white/4 border ${b.border} hover:bg-white/7 hover:-translate-y-1.5 transition-all duration-300 p-6 flex flex-col gap-4 h-full`}>
+                  {/* top glow */}
+                  <div className={`absolute -top-8 -right-8 w-32 h-32 rounded-full ${b.glow} blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
+                  {/* gradient top line */}
+                  <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${b.color} opacity-60 group-hover:opacity-100 transition-opacity`} />
+                  {/* number */}
+                  <span className={`text-3xl font-black ${b.text} leading-none`}>{b.num}</span>
+                  {/* icon */}
+                  <div className={`w-11 h-11 bg-gradient-to-br ${b.color} rounded-xl flex items-center justify-center shadow-lg`}>
+                    <Icon className="w-5 h-5 text-white" />
+                  </div>
+                  {/* text */}
+                  <div className="flex-1 space-y-2">
+                    <h3 className="text-sm font-bold text-white leading-snug">{b.title}</h3>
+                    <p className="text-xs text-white/45 leading-relaxed">{b.desc}</p>
+                  </div>
+                  {/* tag */}
+                  <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full bg-white/5 border ${b.border} ${b.text} self-start`}>{b.tag}</span>
+                </div>
+              )
+            })}
+          </Stagger>
+
+          {/* Full-width proof banner */}
+          <Animate variant="fadeUp">
+            <div className="relative rounded-3xl p-[1px] bg-gradient-to-r from-violet-500/30 via-teal-500/20 to-amber-500/20 overflow-hidden">
+              <div className="bg-[#0f0a2a] rounded-3xl px-8 py-7 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-violet-600/5 via-transparent to-teal-600/5 pointer-events-none" />
+                <div className="relative flex flex-col lg:flex-row items-center gap-8">
+                  {/* hero stat */}
+                  <div className="text-center lg:text-left flex-shrink-0">
+                    <div className="text-5xl font-black bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-300">1000+</div>
+                    <p className="text-sm text-white/40 mt-1 max-w-[180px]">Alumni reconnected in first month</p>
+                  </div>
+                  <div className="hidden lg:block w-px h-16 bg-white/10 flex-shrink-0" />
+                  {/* metrics */}
+                  <div className="flex flex-col sm:flex-row flex-1 gap-6">
+                    {[
+                      { label: 'Avg. engagement rate lift',  value: '+47%', color: 'text-violet-400', bar: 'from-violet-500 to-purple-600', pct: 47 },
+                      { label: 'Placement rate improvement', value: '+32%', color: 'text-teal-400',   bar: 'from-teal-500 to-cyan-500',    pct: 32 },
+                      { label: 'Fundraising in first year',  value: '₹5L+', color: 'text-amber-400',  bar: 'from-amber-500 to-orange-500', pct: 65 },
+                    ].map((m) => (
+                      <div key={m.label} className="flex-1 space-y-2 min-w-0">
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="text-white/40 text-xs truncate">{m.label}</span>
+                          <span className={`font-black text-base flex-shrink-0 ${m.color}`}>{m.value}</span>
+                        </div>
+                        <div className="h-1.5 bg-white/6 rounded-full overflow-hidden">
+                          <div className={`h-full bg-gradient-to-r ${m.bar} rounded-full`} style={{ width: `${m.pct}%` }} />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="hidden lg:block w-px h-16 bg-white/10 flex-shrink-0" />
+                  <Link href="/pricing" className="flex-shrink-0">
+                    <Button className="bg-gradient-to-r from-violet-600 to-cyan-500 hover:from-violet-500 hover:to-cyan-400 text-white rounded-xl font-semibold shadow-lg shadow-violet-900/40 group">
+                      See Results <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </Animate>
         </div>
       </section>
 
       {/* Integrations */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0a0518] relative overflow-hidden">
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-teal-600/15 blur-[100px] pointer-events-none" />
+      <section className="py-28 px-4 sm:px-6 lg:px-8 bg-[#0a0518] relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-teal-600/12 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-violet-700/12 blur-[100px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+
         <div className="max-w-7xl mx-auto relative z-10">
-          <Animate variant="fadeUp" className="text-center mb-14 space-y-4">
-            <div className="inline-flex items-center gap-2 bg-white/8 border border-white/12 text-white/60 rounded-full px-4 py-1.5 text-sm font-medium">
+          <Animate variant="fadeUp" className="text-center mb-16 space-y-5">
+            <div className="inline-flex items-center gap-2 bg-white/8 border border-teal-500/30 text-teal-300 rounded-full px-5 py-2 text-sm font-semibold uppercase tracking-widest">
               <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
               Multi-Channel
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Reach Alumni Where They Already Are</h2>
-            <p className="text-lg text-white/45 max-w-2xl mx-auto">
-              KAPPLR connects with tools your alumni already use — no new downloads or accounts needed.
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+              Reach Alumni{" "}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 via-cyan-300 to-violet-400">
+                Where They Are
+              </span>
+            </h2>
+            <p className="text-lg text-white/50 max-w-2xl mx-auto leading-relaxed">
+              KAPPLR connects with every channel your alumni already use — no new downloads or accounts needed.
             </p>
           </Animate>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <Animate variant="slideLeft" className="space-y-6">
-              <div className="grid grid-cols-3 gap-4">
-                {[
-                  { icon: MessageSquare, label: 'WhatsApp', sub: '2B+ users',   iconColor: 'text-green-400',  bg: 'bg-green-500/10',  border: 'border-green-500/20',  dot: 'bg-green-400' },
-                  { icon: Mail,          label: 'Email',    sub: 'Automated',   iconColor: 'text-violet-400', bg: 'bg-violet-500/10', border: 'border-violet-500/20', dot: 'bg-violet-400' },
-                  { icon: Smartphone,    label: 'SMS',      sub: 'Instant OTP', iconColor: 'text-teal-400',   bg: 'bg-teal-500/10',   border: 'border-teal-500/20',   dot: 'bg-teal-400' },
-                ].map((ch) => {
-                  const Icon = ch.icon
-                  return (
-                    <div key={ch.label} className={`${ch.bg} border ${ch.border} rounded-2xl p-5 flex flex-col gap-3`}>
-                      <div className="flex items-center justify-between">
-                        <Icon className={`w-7 h-7 ${ch.iconColor}`} />
-                        <span className={`w-2 h-2 rounded-full ${ch.dot}`} />
-                      </div>
-                      <div>
-                        <div className={`font-bold text-sm ${ch.iconColor}`}>{ch.label}</div>
-                        <div className="text-xs text-white/35 mt-0.5">{ch.sub}</div>
-                      </div>
+          {/* 3 main channel cards */}
+          <Animate variant="fadeUp" className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+            {[
+              {
+                icon: MessageSquare,
+                label: 'WhatsApp',
+                sub: '2B+ active users worldwide',
+                color: 'from-green-500 to-emerald-600',
+                border: 'border-green-500/25',
+                glow: 'bg-green-600/15',
+                text: 'text-green-400',
+                stat: '98%', statLabel: 'open rate',
+              },
+              {
+                icon: Mail,
+                label: 'Email',
+                sub: 'Automated campaigns & sequences',
+                color: 'from-violet-500 to-purple-600',
+                border: 'border-violet-500/25',
+                glow: 'bg-violet-600/15',
+                text: 'text-violet-400',
+                stat: '10×', statLabel: 'faster outreach',
+              },
+              {
+                icon: Smartphone,
+                label: 'SMS',
+                sub: 'Instant OTP & transactional alerts',
+                color: 'from-teal-500 to-cyan-600',
+                border: 'border-teal-500/25',
+                glow: 'bg-teal-600/15',
+                text: 'text-teal-400',
+                stat: '< 5s', statLabel: 'delivery time',
+              },
+            ].map((ch) => {
+              const Icon = ch.icon
+              return (
+                <div key={ch.label} className={`group relative overflow-hidden rounded-2xl bg-white/4 border ${ch.border} p-6 flex flex-col gap-5 hover:-translate-y-1 transition-all duration-300`}>
+                  <div className={`absolute -top-8 -right-8 w-32 h-32 rounded-full ${ch.glow} blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none`} />
+                  <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${ch.color}`} />
+                  <div className="flex items-center justify-between">
+                    <div className={`w-12 h-12 bg-gradient-to-br ${ch.color} rounded-xl flex items-center justify-center shadow-lg`}>
+                      <Icon className="w-6 h-6 text-white" />
                     </div>
-                  )
-                })}
-              </div>
-              <div className="bg-white/5 border border-white/8 rounded-2xl p-6 space-y-4">
+                    <div className="text-right">
+                      <div className={`text-xl font-black ${ch.text}`}>{ch.stat}</div>
+                      <div className="text-[10px] text-white/30 font-medium">{ch.statLabel}</div>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-white mb-1">{ch.label}</h3>
+                    <p className="text-sm text-white/45">{ch.sub}</p>
+                  </div>
+                </div>
+              )
+            })}
+          </Animate>
+
+          {/* Integration logos grid + capabilities */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Capabilities list */}
+            <Animate variant="slideLeft">
+              <div className="bg-white/4 border border-white/8 rounded-2xl p-7 space-y-5 h-full">
+                <h3 className="text-base font-bold text-white mb-2">What You Can Do</h3>
                 {[
-                  { icon: Zap,         text: 'Send bulk WhatsApp messages with one click', color: 'text-green-400 bg-green-500/15' },
-                  { icon: Mail,        text: 'Automated email sequences for campaigns',    color: 'text-violet-400 bg-violet-500/15' },
-                  { icon: Smartphone,  text: 'SMS OTP & transactional notifications',      color: 'text-teal-400 bg-teal-500/15' },
-                  { icon: Users,       text: 'Personalised messaging via merge tags',      color: 'text-white/70 bg-white/8' },
+                  { icon: Zap,         text: 'Send bulk WhatsApp blasts in one click',     color: 'from-green-500 to-emerald-600' },
+                  { icon: Mail,        text: 'Automated email drip sequences for events',   color: 'from-violet-500 to-purple-600' },
+                  { icon: Smartphone,  text: 'SMS OTP & transactional notifications',       color: 'from-teal-500 to-cyan-600' },
+                  { icon: Users,       text: 'Personalised messaging via merge tags',       color: 'from-blue-500 to-cyan-500' },
+                  { icon: BarChart3,   text: 'Unified dashboard — all channels, one view', color: 'from-fuchsia-500 to-pink-600' },
                 ].map((item, idx) => {
                   const Icon = item.icon
                   return (
-                    <div key={idx} className="flex items-center gap-4">
-                      <div className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${item.color}`}>
-                        <Icon className="w-4 h-4" />
+                    <div key={idx} className="flex items-center gap-4 group">
+                      <div className={`w-9 h-9 bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-110 transition-transform`}>
+                        <Icon className="w-4 h-4 text-white" />
                       </div>
-                      <span className="text-sm text-white/60">{item.text}</span>
+                      <span className="text-sm text-white/60 group-hover:text-white/90 transition-colors">{item.text}</span>
                     </div>
                   )
                 })}
               </div>
             </Animate>
 
+            {/* Integration tiles */}
             <Animate variant="slideRight">
-            <div className="relative bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10 overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-64 h-64 rounded-full border border-white/5" />
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                <div className="w-44 h-44 rounded-full border border-white/5" />
-              </div>
-              <p className="text-xs font-semibold text-white/30 uppercase tracking-widest text-center mb-6 relative z-10">Connected Integrations</p>
-              <div className="relative z-10 grid grid-cols-3 gap-5">
-                {[
-                  { label: 'WhatsApp', bg: 'bg-green-500',   letter: 'W'  },
-                  { label: 'Gmail',    bg: 'bg-red-500',     letter: 'G'  },
-                  { label: 'SMS',      bg: 'bg-teal-500',    letter: 'S'  },
-                  { label: 'Zoom',     bg: 'bg-blue-600',    letter: 'Z'  },
-                  { label: 'KAPPLR',   bg: '',               letter: 'K', center: true },
-                  { label: 'LinkedIn', bg: 'bg-sky-600',     letter: 'in' },
-                  { label: 'Razorpay', bg: 'bg-indigo-500',  letter: 'R'  },
-                  { label: 'Google',   bg: 'bg-yellow-500',  letter: 'G'  },
-                  { label: 'UPI',      bg: 'bg-orange-500',  letter: 'U'  },
-                ].map((app, idx) => (
-                  <div key={idx} className="flex flex-col items-center gap-2">
-                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white font-extrabold text-base shadow-lg hover:scale-105 transition-transform
-                      ${app.center ? 'bg-brand-gradient scale-110 ring-4 ring-violet-500/30' : app.bg}
-                    `}>
-                      {app.letter}
+              <div className="bg-white/4 border border-white/8 rounded-2xl p-7 h-full">
+                <p className="text-[11px] font-bold text-white/30 uppercase tracking-[0.25em] mb-6">Works with your tools</p>
+                <div className="grid grid-cols-4 gap-4">
+                  {[
+                    { label: 'WhatsApp', color: 'bg-gradient-to-br from-green-500 to-emerald-600',   letter: 'W' },
+                    { label: 'Gmail',    color: 'bg-gradient-to-br from-red-500 to-rose-600',         letter: 'G' },
+                    { label: 'LinkedIn', color: 'bg-gradient-to-br from-sky-500 to-blue-600',         letter: 'in' },
+                    { label: 'Zoom',     color: 'bg-gradient-to-br from-blue-600 to-indigo-600',      letter: 'Z' },
+                    { label: 'Razorpay', color: 'bg-gradient-to-br from-indigo-500 to-violet-600',    letter: 'R' },
+                    { label: 'Google',   color: 'bg-gradient-to-br from-yellow-400 to-orange-500',    letter: 'G' },
+                    { label: 'SMS',      color: 'bg-gradient-to-br from-teal-500 to-cyan-600',        letter: 'S' },
+                    { label: 'UPI',      color: 'bg-gradient-to-br from-orange-500 to-amber-500',     letter: 'U' },
+                  ].map((app) => (
+                    <div key={app.label} className="flex flex-col items-center gap-2 group">
+                      <div className={`w-14 h-14 ${app.color} rounded-2xl flex items-center justify-center text-white font-extrabold text-sm shadow-lg group-hover:scale-110 group-hover:-translate-y-0.5 transition-all duration-200`}>
+                        {app.letter}
+                      </div>
+                      <span className="text-[11px] text-white/35 group-hover:text-white/60 transition-colors font-medium">{app.label}</span>
                     </div>
-                    <span className={`text-xs font-medium ${app.center ? 'text-white font-bold' : 'text-white/35'}`}>{app.label}</span>
-                  </div>
-                ))}
+                  ))}
+                </div>
+                <div className="mt-6 pt-4 border-t border-white/8 text-center">
+                  <span className="text-xs text-white/25 font-medium">+ More integrations coming soon</span>
+                </div>
               </div>
-              <div className="mt-6 pt-4 border-t border-white/8 text-center relative z-10">
-                <span className="text-xs text-white/25">+ More integrations coming soon</span>
-              </div>
-            </div>
             </Animate>
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0d0720] relative overflow-hidden">
-        <div className="absolute top-1/2 left-0 w-[400px] h-[400px] rounded-full bg-violet-700/15 blur-[100px] pointer-events-none" />
+      <section className="py-28 px-4 sm:px-6 lg:px-8 bg-[#0d0720] relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-violet-700/15 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-teal-600/10 blur-[100px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.015)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.015)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+
         <div className="max-w-7xl mx-auto relative z-10">
-          <Animate variant="fadeUp" className="text-center mb-16 space-y-4">
-            <div className="inline-block bg-white/8 border border-white/12 text-white/60 rounded-full px-4 py-1.5 text-sm font-medium">What They Say</div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Trusted by Academic Leaders</h2>
-            <p className="text-lg text-white/45 max-w-xl mx-auto">
+          <Animate variant="fadeUp" className="text-center mb-16 space-y-5">
+            <div className="inline-flex items-center gap-2 bg-white/8 border border-yellow-500/30 text-yellow-300 rounded-full px-5 py-2 text-sm font-semibold uppercase tracking-widest">
+              <span className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
+              What They Say
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+              Trusted by{" "}
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-300 to-violet-400">
+                Academic Leaders
+              </span>
+            </h2>
+            <p className="text-lg text-white/50 max-w-xl mx-auto">
               Institutions across India rely on KAPPLR to power their alumni success.
             </p>
           </Animate>
-          <Animate variant="fadeUp" delay={0.1}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { quote: "KAPPLR transformed how we manage alumni. Our reunion attendance doubled and fundraising hit a record high in the very first year.",                                            name: "Dr. Priya Sharma",  role: "Dean, Alumni Affairs",   institution: "St. Xavier's College, Mumbai", initials: "PS", color: "bg-violet-500" },
-              { quote: "The WhatsApp integration alone saved our team 20 hours a week. Alumni respond so much faster now and engagement is at an all-time high.",                                     name: "Rajesh Kumar",      role: "Alumni Coordinator",      institution: "IIT Bombay Alumni Cell",        initials: "RK", color: "bg-purple-500" },
-              { quote: "We were struggling with data scattered in spreadsheets. KAPPLR centralised everything and also helped with our NAAC accreditation reports.",                                  name: "Prof. Anita Desai", role: "Principal",               institution: "Fergusson College, Pune",       initials: "AD", color: "bg-teal-500" },
-            ].map((t, idx) => (
-              <div key={idx} className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-8 space-y-6 hover:bg-white/8 hover:border-white/20 transition-all flex flex-col">
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
+
+          {/* Featured testimonial — large horizontal card */}
+          <Animate variant="fadeUp" className="mb-10">
+            <div className="relative rounded-3xl p-[1px] bg-gradient-to-r from-violet-500/50 via-purple-400/30 to-teal-500/40 overflow-hidden">
+              <div className="relative bg-[#0f0a2a] rounded-3xl p-8 md:p-12 overflow-hidden">
+                <div className="absolute top-0 left-0 w-64 h-64 rounded-full bg-violet-600/15 blur-3xl pointer-events-none" />
+                <div className="absolute bottom-0 right-0 w-48 h-48 rounded-full bg-teal-600/10 blur-2xl pointer-events-none" />
+                <div className="relative flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                  {/* Quote mark */}
+                  <div className="hidden md:flex w-20 h-20 rounded-2xl bg-gradient-to-br from-violet-500 to-teal-500 items-center justify-center flex-shrink-0 text-4xl font-serif text-white/80 shadow-xl">&ldquo;</div>
+                  <div className="flex-1 space-y-4 text-center md:text-left">
+                    <p className="text-xl md:text-2xl font-bold text-white leading-snug">
+                      "We reconnected with 1000+ alumni in weeks using KAPPLR"
+                    </p>
+                    <div className="flex items-center justify-center md:justify-start gap-3">
+                      <div className="flex gap-0.5">
+                        {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
+                      </div>
+                      <span className="text-white/40 text-sm">— Alumni Coordinator, Leading College, Kolkata</span>
+                    </div>
+                  </div>
+                  {/* Impact badge */}
+                  <div className="flex-shrink-0 bg-white/5 border border-white/10 rounded-2xl p-5 text-center min-w-[120px]">
+                    <div className="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-b from-teal-400 to-cyan-300">1000+</div>
+                    <div className="text-[11px] text-white/40 font-medium mt-1">Alumni reconnected</div>
+                  </div>
                 </div>
-                <p className="text-white/55 italic flex-1">&ldquo;{t.quote}&rdquo;</p>
-                <div className="flex items-center gap-3 pt-2 border-t border-white/8">
-                  <div className={`w-10 h-10 ${t.color} rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0`}>
+              </div>
+            </div>
+          </Animate>
+
+          {/* 3 cards */}
+          <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              {
+                quote: "KAPPLR transformed how we manage alumni. Our reunion attendance doubled and fundraising hit a record high in the very first year.",
+                name: "Dr. Priya Sharma", role: "Dean, Alumni Affairs", institution: "St. Xavier's College, Mumbai",
+                initials: "PS", color: 'from-violet-500 to-purple-600', border: 'border-violet-500/25',
+              },
+              {
+                quote: "The WhatsApp integration alone saved our team 20 hours a week. Alumni respond so much faster now and engagement is at an all-time high.",
+                name: "Rajesh Kumar", role: "Alumni Coordinator", institution: "IIT Bombay Alumni Cell",
+                initials: "RK", color: 'from-blue-500 to-cyan-500', border: 'border-blue-500/25',
+              },
+              {
+                quote: "We were struggling with data scattered in spreadsheets. KAPPLR centralised everything and helped with our NAAC accreditation reports.",
+                name: "Prof. Anita Desai", role: "Principal", institution: "Fergusson College, Pune",
+                initials: "AD", color: 'from-teal-500 to-emerald-600', border: 'border-teal-500/25',
+              },
+            ].map((t, idx) => (
+              <div key={idx} className={`group relative overflow-hidden bg-white/4 border ${t.border} rounded-2xl p-6 flex flex-col gap-5 hover:bg-white/7 hover:-translate-y-1 transition-all duration-300`}>
+                {/* top gradient line */}
+                <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${t.color}`} />
+                {/* stars */}
+                <div className="flex gap-0.5">
+                  {[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />)}
+                </div>
+                {/* quote */}
+                <p className="text-sm text-white/60 leading-relaxed flex-1 italic">&ldquo;{t.quote}&rdquo;</p>
+                {/* author */}
+                <div className="flex items-center gap-3 pt-4 border-t border-white/8">
+                  <div className={`w-10 h-10 bg-gradient-to-br ${t.color} rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0`}>
                     {t.initials}
                   </div>
                   <div>
-                    <div className="font-semibold text-white text-sm">{t.name}</div>
-                    <div className="text-xs text-white/35">{t.role} · {t.institution}</div>
+                    <div className="text-sm font-bold text-white">{t.name}</div>
+                    <div className="text-[11px] text-white/35">{t.role} · {t.institution}</div>
                   </div>
                 </div>
               </div>
             ))}
-          </div>
-          </Animate>
+          </Stagger>
         </div>
       </section>
 
       {/* Pricing Teaser */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0a0518] relative overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[600px] h-[300px] rounded-full bg-purple-600/20 blur-[100px]" />
-        </div>
-        <div className="max-w-4xl mx-auto relative z-10">
+      <section className="py-28 px-4 sm:px-6 lg:px-8 bg-[#0a0518] relative overflow-hidden">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-violet-700/20 blur-[120px] pointer-events-none" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
+        <div className="max-w-5xl mx-auto relative z-10">
           <Animate variant="scaleIn">
-          <div className="bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 p-10 md:p-16 text-center space-y-8">
-            <div className="inline-block bg-white/10 border border-white/15 text-white/70 rounded-full px-4 py-1.5 text-sm font-semibold">Zero Risk</div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Start Free for 30 Days</h2>
-            <p className="text-lg text-white/45 max-w-xl mx-auto">
-              Full access to every feature. No credit card. No commitment. Cancel anytime.
-            </p>
-            <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-white/45">
-              {['Alumni Directory', 'Event Management', 'WhatsApp Integration', 'Fundraising Campaigns', 'Analytics Dashboard', 'Mobile App'].map((f, i) => (
-                <div key={i} className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-violet-400 flex-shrink-0" />
-                  {f}
+            <div className="relative rounded-3xl p-[1px] bg-gradient-to-br from-violet-500/50 via-purple-400/25 to-cyan-500/40">
+              <div className="relative bg-[#0f0a2a] rounded-3xl overflow-hidden">
+                {/* inner glow blobs */}
+                <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-violet-600/15 blur-3xl pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-cyan-600/10 blur-2xl pointer-events-none" />
+
+                <div className="relative p-10 md:p-14">
+                  {/* top row */}
+                  <div className="flex flex-col md:flex-row items-center gap-8 mb-10">
+                    <div className="flex-1 text-center md:text-left space-y-3">
+                      <div className="inline-flex items-center gap-2 bg-white/8 border border-violet-500/30 text-violet-300 rounded-full px-4 py-1.5 text-sm font-semibold">
+                        <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
+                        Zero Risk · 30-Day Free Trial
+                      </div>
+                      <h2 className="text-3xl md:text-4xl font-extrabold text-white leading-tight">
+                        Start Free for{" "}
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-cyan-400">30 Days</span>
+                      </h2>
+                      <p className="text-white/50 text-base leading-relaxed max-w-md">
+                        Full access to every feature. No credit card. No commitment. Cancel anytime.
+                      </p>
+                    </div>
+                    {/* CTA */}
+                    <div className="flex-shrink-0 flex flex-col items-center gap-3">
+                      <Link href="/pricing">
+                        <Button size="lg" className="bg-gradient-to-r from-violet-600 to-cyan-500 hover:from-violet-500 hover:to-cyan-400 text-white rounded-xl px-10 font-semibold shadow-xl shadow-violet-900/50 group">
+                          Start Your Free Trial
+                          <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </Link>
+                      <p className="text-xs text-white/25">After trial, pricing is tailored to your needs</p>
+                    </div>
+                  </div>
+
+                  {/* feature chips */}
+                  <div className="border-t border-white/8 pt-8">
+                    <p className="text-[11px] text-white/30 uppercase tracking-widest font-semibold mb-5 text-center">Everything included in your trial</p>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                      {[
+                        { icon: Users,         label: 'Alumni Directory' },
+                        { icon: Zap,           label: 'Event Management' },
+                        { icon: MessageSquare, label: 'WhatsApp Integration' },
+                        { icon: Award,         label: 'Fundraising Campaigns' },
+                        { icon: BarChart3,     label: 'Analytics Dashboard' },
+                        { icon: Smartphone,    label: 'Mobile App' },
+                      ].map(({ icon: Icon, label }) => (
+                        <div key={label} className="flex items-center gap-3 bg-white/4 border border-white/8 rounded-xl px-4 py-3 hover:bg-white/7 transition-colors">
+                          <CheckCircle2 className="w-4 h-4 text-violet-400 flex-shrink-0" />
+                          <span className="text-sm text-white/60 font-medium">{label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              ))}
+              </div>
             </div>
-            <Link href="/pricing">
-              <Button size="lg" className="bg-brand-gradient hover:opacity-90 text-white rounded-full px-10" style={{ boxShadow: '0 0 40px rgba(139,92,246,0.4)' }}>
-                Start Your Free Trial
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-            <p className="text-xs text-white/25">After trial, pricing is tailored to your institution size &amp; needs.</p>
-          </div>
           </Animate>
         </div>
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-brand-gradient relative overflow-hidden">
-        <div className="absolute inset-0 bg-[#0a0518]/30 pointer-events-none" />
-        <div
-          className="absolute inset-0 opacity-[0.06] pointer-events-none"
-          style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)', backgroundSize: '32px 32px' }}
-        />
+      <section className="py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Full-bleed gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-violet-900 via-purple-900 to-teal-900" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-violet-600/25 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-teal-500/20 blur-[100px] pointer-events-none" />
+
         <Animate variant="fadeIn">
-        <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-white">Ready to Strengthen Your Alumni Ecosystem?</h2>
-          <p className="text-lg text-white/80">
-            Join 50+ institutions already using KAPPLR to build engaged, connected alumni communities.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/pricing">
-              <Button size="lg" className="bg-white text-[#0a0518] hover:bg-white/90 rounded-full px-8 font-semibold">
-                Start Your Free Trial Today
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-            </Link>
-            <Link href="/features">
-              <Button size="lg" className="border border-white/50 bg-white/10 text-white hover:bg-white/20 rounded-full px-8 backdrop-blur-sm">
-                Explore Features
-              </Button>
-            </Link>
+          <div className="max-w-4xl mx-auto text-center space-y-8 relative z-10">
+            {/* badge */}
+            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/80 rounded-full px-5 py-2 text-sm font-semibold backdrop-blur-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
+              Join 50+ institutions across India
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-white leading-tight">
+              Ready to Unlock the Power of<br className="hidden sm:block" />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-300 via-cyan-200 to-violet-300"> Your Alumni Network?</span>
+            </h2>
+            <p className="text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
+              Join forward-thinking institutes transforming their graduate networks into active, engaged communities.
+            </p>
+            {/* trust microcopy */}
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-white/50">
+              {['No credit card required', 'Setup in under 10 minutes', 'Dedicated onboarding support'].map((item) => (
+                <div key={item} className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-teal-400 flex-shrink-0" />
+                  {item}
+                </div>
+              ))}
+            </div>
+            {/* CTA buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
+              <Link href="/pricing">
+                <Button size="lg" className="bg-white text-[#0a0518] hover:bg-white/95 rounded-xl px-10 font-bold shadow-2xl shadow-white/20 group">
+                  Claim Your Free Trial
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+              <Link href="/features">
+                <Button size="lg" className="border border-white/30 bg-white/10 text-white hover:bg-white/20 rounded-xl px-8 backdrop-blur-sm font-semibold">
+                  Explore Features
+                </Button>
+              </Link>
+            </div>
           </div>
-          <p className="text-sm text-white/50">No credit card required · Setup in under 10 minutes · Dedicated onboarding support</p>
-        </div>
         </Animate>
       </section>
 
