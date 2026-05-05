@@ -20,80 +20,242 @@ import { Animate, Stagger } from '@/components/animate'
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-[#0a0518]">
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-slate-50" style={{ minHeight: 'calc(90vh - 80px)' }}>
-        {/* Hero image — fills right portion, bleeds to edge */}
-        <div className="absolute inset-0">
-          <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/shutterstock_658847998-c9tVy9ZQZ6M78DFJQEVrj5IO9E4Vly.webp"
-            alt="Alumni community celebrating"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          {/* Left-side gradient so text is readable over the image */}
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-50 via-slate-50/85 via-30% to-slate-50/0" />
-          {/* Bottom fade */}
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-50/60 via-transparent to-transparent" />
-        </div>
+      <section className="relative overflow-hidden bg-[#0a0518]" style={{ minHeight: 'calc(95vh - 80px)' }}>
+        {/* Glow orbs */}
+        <div className="absolute top-[-10%] left-[20%] w-[700px] h-[700px] rounded-full bg-purple-700/40 blur-[130px] pointer-events-none" />
+        <div className="absolute bottom-[-10%] right-[15%] w-[550px] h-[550px] rounded-full bg-teal-500/30 blur-[110px] pointer-events-none" />
+        <div className="absolute top-[40%] left-[5%] w-[300px] h-[300px] rounded-full bg-violet-600/20 blur-[80px] pointer-events-none" />
+        {/* Dot-grid overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          style={{
+            backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)',
+            backgroundSize: '32px 32px',
+          }}
+        />
 
-        {/* Text content — bottom-left overlay */}
-        <div className="relative z-10 flex flex-col justify-end h-full px-6 sm:px-10 lg:px-16 pb-16 pt-24 md:pt-32" style={{ minHeight: 'calc(90vh - 80px)' }}>
-          <div className="max-w-2xl space-y-5">
+        <div
+          className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 flex flex-col lg:flex-row items-center gap-12 lg:gap-20 py-20 md:py-28"
+          style={{ minHeight: 'calc(95vh - 80px)' }}
+        >
+          {/* ── Left: Text ── */}
+          <div className="flex-1 space-y-7 text-center lg:text-left">
+            {/* Badge */}
             <Animate variant="fadeUp" delay={0}>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-brand-gradient">
-                Turn Alumni Into Your Greatest Asset
+              <div className="inline-flex items-center gap-2 bg-white/10 border border-white/15 rounded-full px-4 py-1.5 text-sm text-white/75 backdrop-blur-sm">
+                <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
+                India&apos;s #1 Alumni Engagement Platform
+                <span className="ml-1 bg-brand-gradient text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full leading-none">
+                  NEW
+                </span>
+              </div>
+            </Animate>
+
+            {/* Headline */}
+            <Animate variant="fadeUp" delay={0.1}>
+              <h1 className="text-5xl md:text-6xl lg:text-[4.5rem] font-extrabold leading-[1.06] tracking-tight text-white">
+                Turn Alumni Into<br />
+                <span className="text-brand-gradient">Your Greatest</span><br />
+                Asset
               </h1>
             </Animate>
-            <Animate variant="fadeUp" delay={0.15}>
-              <p className="text-lg text-slate-600 max-w-md leading-relaxed">
-                KAPPLR helps schools and colleges build engaged alumni communities, unlock mentorship opportunities, and drive institutional growth. Just start — it&apos;s that easy.
+
+            {/* Sub-headline */}
+            <Animate variant="fadeUp" delay={0.2}>
+              <p className="text-lg text-white/55 max-w-lg leading-relaxed mx-auto lg:mx-0">
+                KAPPLR helps schools and colleges build engaged alumni communities,
+                unlock mentorship opportunities, and drive institutional growth —{' '}
+                <span className="text-white/80 font-medium">all in one platform.</span>
               </p>
             </Animate>
+
+            {/* CTAs */}
             <Animate variant="fadeUp" delay={0.3}>
-              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
                 <Link href="/pricing">
-                  <Button size="lg" className="bg-brand-gradient hover:opacity-90 text-white rounded-full px-8 font-semibold shadow-none">
+                  <Button
+                    size="lg"
+                    className="bg-brand-gradient hover:opacity-90 text-white rounded-full px-8 font-semibold text-base"
+                    style={{ boxShadow: '0 0 40px rgba(139,92,246,0.45)' }}
+                  >
                     Start Free Trial
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
                 <Link href="/how-it-works">
-                  <Button size="lg" variant="outline" className="rounded-full px-8 bg-white/70 hover:bg-white border-slate-300 text-slate-700">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="rounded-full px-8 bg-white/10 hover:bg-white/20 border-white/20 text-white backdrop-blur-sm text-base"
+                  >
                     See How It Works
                   </Button>
                 </Link>
               </div>
             </Animate>
-            <Animate variant="fadeUp" delay={0.45}>
-              <p className="text-xs text-slate-500">30-day free trial · No credit card required · Cancel anytime</p>
+
+            {/* Trust strip */}
+            <Animate variant="fadeUp" delay={0.4}>
+              <div className="space-y-4">
+                <p className="text-xs text-white/35">
+                  30-day free trial · No credit card required · Cancel anytime
+                </p>
+                <div className="flex items-center gap-4 justify-center lg:justify-start">
+                  <div className="flex -space-x-2">
+                    {['BK', 'SR', 'AP', 'MK', 'RJ'].map((initials, i) => (
+                      <div
+                        key={i}
+                        className="w-8 h-8 rounded-full bg-brand-gradient border-2 border-[#0a0518] flex items-center justify-center text-[10px] font-bold text-white flex-shrink-0"
+                      >
+                        {initials}
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-sm text-white/50">
+                    <span className="text-white font-semibold">50+ institutions</span> already on KAPPLR
+                  </p>
+                </div>
+              </div>
             </Animate>
           </div>
+
+          {/* ── Right: Dashboard mockup card ── */}
+          <Animate variant="slideRight" delay={0.25} className="flex-1 w-full max-w-md lg:max-w-none">
+            <div className="relative">
+              {/* Glow behind */}
+              <div className="absolute inset-0 bg-brand-gradient opacity-20 blur-3xl rounded-3xl scale-110 pointer-events-none" />
+
+              {/* Main card */}
+              <div className="relative bg-white/10 backdrop-blur-2xl border border-white/15 rounded-3xl p-6 shadow-2xl space-y-5">
+                {/* Header */}
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-[11px] text-white/40 font-semibold uppercase tracking-widest">Alumni Dashboard</p>
+                    <h3 className="text-white font-bold text-lg mt-0.5">St. Xavier&apos;s College</h3>
+                  </div>
+                  <div className="w-10 h-10 bg-brand-gradient rounded-xl flex items-center justify-center shadow-lg">
+                    <Users className="w-5 h-5 text-white" />
+                  </div>
+                </div>
+
+                {/* Stats row */}
+                <div className="grid grid-cols-3 gap-3">
+                  <div className="bg-white/6 rounded-2xl p-3 space-y-1.5 border border-white/8">
+                    <p className="text-[11px] text-white/40 leading-none">Total Alumni</p>
+                    <p className="text-base font-bold text-white leading-none">12,400</p>
+                    <p className="text-[11px] font-semibold text-green-400">+8% this mo.</p>
+                  </div>
+                  <div className="bg-white/6 rounded-2xl p-3 space-y-1.5 border border-white/8">
+                    <p className="text-[11px] text-white/40 leading-none">Engaged</p>
+                    <p className="text-base font-bold text-white leading-none">3,891</p>
+                    <p className="text-[11px] font-semibold text-green-400">+24% this mo.</p>
+                  </div>
+                  <div className="bg-white/6 rounded-2xl p-3 space-y-1.5 border border-white/8">
+                    <p className="text-[11px] text-white/40 leading-none">Donations</p>
+                    <p className="text-base font-bold text-white leading-none">₹42L</p>
+                    <p className="text-[11px] font-semibold text-green-400">+15% this mo.</p>
+                  </div>
+                </div>
+
+                {/* Engagement progress bar */}
+                <div className="space-y-2">
+                  <div className="flex justify-between text-xs">
+                    <span className="text-white/45">Monthly Engagement Rate</span>
+                    <span className="text-white font-bold">78%</span>
+                  </div>
+                  <div className="h-2 bg-white/10 rounded-full overflow-hidden">
+                    <div className="h-full w-[78%] bg-brand-gradient rounded-full" />
+                  </div>
+                </div>
+
+                {/* Activity feed */}
+                <div className="space-y-2.5">
+                  <p className="text-[11px] text-white/35 font-semibold uppercase tracking-widest">Recent Activity</p>
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm">🎓</span>
+                    <span className="text-white/65 text-sm flex-1 truncate">Batch 2020 reunion registered</span>
+                    <span className="text-white/30 text-xs flex-shrink-0">2m ago</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm">💰</span>
+                    <span className="text-white/65 text-sm flex-1 truncate">New donation ₹25,000 received</span>
+                    <span className="text-white/30 text-xs flex-shrink-0">1h ago</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm">🤝</span>
+                    <span className="text-white/65 text-sm flex-1 truncate">5 new mentorship matches made</span>
+                    <span className="text-white/30 text-xs flex-shrink-0">3h ago</span>
+                  </div>
+                </div>
+
+                {/* Channel pills */}
+                <div className="flex gap-2 pt-1 border-t border-white/10">
+                  <div className="flex items-center gap-1.5 bg-white/6 border border-white/10 rounded-full px-3 py-1.5 text-xs text-white/55">
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0" />
+                    WhatsApp
+                  </div>
+                  <div className="flex items-center gap-1.5 bg-white/6 border border-white/10 rounded-full px-3 py-1.5 text-xs text-white/55">
+                    <span className="w-1.5 h-1.5 rounded-full bg-violet-400 flex-shrink-0" />
+                    Email
+                  </div>
+                  <div className="flex items-center gap-1.5 bg-white/6 border border-white/10 rounded-full px-3 py-1.5 text-xs text-white/55">
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal-400 flex-shrink-0" />
+                    SMS
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating badge — top right */}
+              <div className="absolute -top-3 -right-3 bg-green-500 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                LIVE · +24% growth
+              </div>
+
+              {/* Floating badge — bottom left */}
+              <div className="absolute -bottom-4 -left-3 bg-white/10 backdrop-blur-xl border border-white/20 text-white text-xs font-medium px-4 py-2.5 rounded-2xl shadow-xl flex items-center gap-2">
+                <Star className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400 flex-shrink-0" />
+                95% satisfaction rate
+              </div>
+            </div>
+          </Animate>
         </div>
       </section>
 
       {/* Social Proof Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/50 border-y border-border">
+      <section className="py-14 px-4 sm:px-6 lg:px-8 bg-white border-y border-border">
         <div className="max-w-7xl mx-auto">
-          <Stagger className="grid grid-cols-1 md:grid-cols-4 gap-8" childVariant="fadeUp">
-            <div className="text-center space-y-2">
-              <div className="text-4xl font-bold text-primary">1000+</div>
-              <p className="text-muted-foreground">Alumni Reconnected Monthly</p>
+          <Stagger className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6" childVariant="fadeUp">
+            <div className="flex flex-col items-center text-center gap-3 p-6 rounded-2xl border border-border hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-violet-50 text-violet-600">
+                <Users className="w-6 h-6" />
+              </div>
+              <div className="text-3xl font-bold text-foreground">1000+</div>
+              <p className="text-sm text-muted-foreground">Alumni Reconnected Monthly</p>
             </div>
-            <div className="text-center space-y-2">
-              <div className="text-4xl font-bold text-primary">50+</div>
-              <p className="text-muted-foreground">Institutions Using KAPPLR</p>
+            <div className="flex flex-col items-center text-center gap-3 p-6 rounded-2xl border border-border hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-teal-50 text-teal-600">
+                <Award className="w-6 h-6" />
+              </div>
+              <div className="text-3xl font-bold text-foreground">50+</div>
+              <p className="text-sm text-muted-foreground">Institutions Using KAPPLR</p>
             </div>
-            <div className="text-center space-y-2">
-              <div className="text-4xl font-bold text-primary">₹10Cr+</div>
-              <p className="text-muted-foreground">Fundraising Facilitated</p>
+            <div className="flex flex-col items-center text-center gap-3 p-6 rounded-2xl border border-border hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-amber-50 text-amber-600">
+                <TrendingUp className="w-6 h-6" />
+              </div>
+              <div className="text-3xl font-bold text-foreground">₹10Cr+</div>
+              <p className="text-sm text-muted-foreground">Fundraising Facilitated</p>
             </div>
-            <div className="text-center space-y-2">
-              <div className="text-4xl font-bold text-primary">95%</div>
-              <p className="text-muted-foreground">User Satisfaction Rating</p>
+            <div className="flex flex-col items-center text-center gap-3 p-6 rounded-2xl border border-border hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center bg-green-50 text-green-600">
+                <Star className="w-6 h-6" />
+              </div>
+              <div className="text-3xl font-bold text-foreground">95%</div>
+              <p className="text-sm text-muted-foreground">User Satisfaction Rating</p>
             </div>
           </Stagger>
         </div>

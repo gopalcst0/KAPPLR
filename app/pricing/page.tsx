@@ -128,7 +128,7 @@ export default function PricingPage() {
 
       {/* Trial Banner */}
       <section className="pb-10 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto bg-primary rounded-3xl p-8 md:p-12 text-center text-primary-foreground space-y-5 shadow-xl">
+        <div className="max-w-3xl mx-auto bg-primary rounded-3xl p-8 md:p-12 text-center text-primary-foreground space-y-5 shadow-sm">
           <div className="inline-block bg-white/20 rounded-full px-4 py-1.5 text-sm font-semibold">Limited Time — Free Access</div>
           <h2 className="text-3xl md:text-4xl font-bold">Try All Features Free for 30 Days</h2>
           <p className="opacity-90 max-w-xl mx-auto">Every plan starts with a full-featured 30-day trial. No restrictions, no hidden limits.</p>
