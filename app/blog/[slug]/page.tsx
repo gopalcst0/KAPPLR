@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { Calendar, Clock, ArrowLeft, Tag, Share2, BookOpen } from 'lucide-react'
+import { Animate } from '@/components/animate'
 
 // ─── Post data ───────────────────────────────────────────────────────────────
 const posts: Record<string, Post> = {
@@ -290,13 +291,22 @@ interface Post {
   body: string
 }
 
-const categoryColors: Record<string, string> = {
-  Enrollment: 'bg-violet-100 text-violet-700',
-  Strategy: 'bg-teal-100 text-teal-700',
-  Communication: 'bg-sky-100 text-sky-700',
-  Fundraising: 'bg-amber-100 text-amber-700',
-  Mentorship: 'bg-pink-100 text-pink-700',
-  Analytics: 'bg-emerald-100 text-emerald-700',
+const categoryBadge: Record<string, string> = {
+  Enrollment:    'bg-violet-500/15 text-violet-300 border border-violet-500/30',
+  Strategy:      'bg-teal-500/15 text-teal-300 border border-teal-500/30',
+  Communication: 'bg-sky-500/15 text-sky-300 border border-sky-500/30',
+  Fundraising:   'bg-amber-500/15 text-amber-300 border border-amber-500/30',
+  Mentorship:    'bg-pink-500/15 text-pink-300 border border-pink-500/30',
+  Analytics:     'bg-emerald-500/15 text-emerald-300 border border-emerald-500/30',
+}
+
+const categoryAccent: Record<string, string> = {
+  Enrollment:    'from-violet-500',
+  Strategy:      'from-teal-500',
+  Communication: 'from-sky-500',
+  Fundraising:   'from-amber-500',
+  Mentorship:    'from-pink-500',
+  Analytics:     'from-emerald-500',
 }
 
 // Render markdown-like body to JSX
@@ -313,13 +323,13 @@ function renderBody(body: string) {
     }
     if (line.startsWith('## ')) {
       elements.push(
-        <h2 key={key++} className="text-2xl font-bold text-foreground mt-10 mb-4">
+        <h2 key={key++} className="text-2xl font-bold text-white mt-10 mb-4 pb-2 border-b border-white/10">
           {line.slice(3)}
         </h2>
       )
     } else if (line.startsWith('**') && line.endsWith('**') && !line.slice(2, -2).includes('**')) {
       elements.push(
-        <p key={key++} className="font-semibold text-foreground mt-5 mb-1">
+        <p key={key++} className="font-semibold text-violet-300 mt-5 mb-1">
           {line.slice(2, -2)}
         </p>
       )
@@ -331,9 +341,9 @@ function renderBody(body: string) {
       }
       i-- // back up one since loop will increment
       elements.push(
-        <ul key={key++} className="list-disc list-inside space-y-1.5 my-4 text-muted-foreground">
+        <ul key={key++} className="list-disc list-inside space-y-1.5 my-4 text-white/50">
           {items.map((item, idx) => (
-            <li key={idx} dangerouslySetInnerHTML={{ __html: item.replace(/\*\*(.*?)\*\*/g, '<strong class="text-foreground">$1</strong>') }} />
+            <li key={idx} dangerouslySetInnerHTML={{ __html: item.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white/80">$1</strong>') }} />
           ))}
         </ul>
       )
@@ -341,9 +351,9 @@ function renderBody(body: string) {
       elements.push(
         <p
           key={key++}
-          className="text-muted-foreground leading-relaxed my-3"
+          className="text-white/60 leading-relaxed my-3"
           dangerouslySetInnerHTML={{
-            __html: line.replace(/\*\*(.*?)\*\*/g, '<strong class="text-foreground font-semibold">$1</strong>'),
+            __html: line.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white/90 font-semibold">$1</strong>'),
           }}
         />
       )
@@ -372,49 +382,51 @@ export default async function SingleBlogPage({ params }: { params: Promise<{ slu
   const related = getRelated(slug)
 
   return (
-    <>
+    <div className="min-h-screen bg-[#0a0518]">
       <Navbar />
 
-      {/* Hero image */}
-      <div className="w-full h-72 sm:h-96 relative overflow-hidden">
+      {/* ── Hero image with overlay title ── */}
+      <div className="w-full h-72 sm:h-[460px] relative overflow-hidden">
         <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0518] via-[#0a0518]/60 to-black/10" />
+        <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 pb-10">
+          <div className="flex flex-wrap items-center gap-3 mb-3">
+            <span className={`text-xs font-semibold px-3 py-1 rounded-full ${categoryBadge[post.category]}`}>
+              {post.category}
+            </span>
+            <span className="flex items-center gap-1.5 text-xs text-white/40">
+              <Calendar className="w-3.5 h-3.5" />{post.date}
+            </span>
+            <span className="flex items-center gap-1.5 text-xs text-white/40">
+              <Clock className="w-3.5 h-3.5" />{post.readTime}
+            </span>
+          </div>
+          <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white leading-snug max-w-3xl">
+            {post.title}
+          </h1>
+        </div>
       </div>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 py-12">
-        <div className="grid lg:grid-cols-[1fr_320px] gap-12">
-          {/* Article */}
+        <div className="grid lg:grid-cols-[1fr_300px] gap-12">
+
+          {/* ── Article ── */}
           <article>
-            {/* Back link */}
-            <Link href="/blog" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-primary transition-colors mb-6">
-              <ArrowLeft className="w-4 h-4" /> Back to Blog
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-1.5 text-sm text-white/40 hover:text-violet-300 transition-colors mb-8 group"
+            >
+              <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" /> Back to Blog
             </Link>
 
-            {/* Meta */}
-            <div className="flex flex-wrap items-center gap-3 mb-4">
-              <span className={`text-xs font-semibold px-3 py-1 rounded-full ${categoryColors[post.category]}`}>
-                {post.category}
-              </span>
-              <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                <Calendar className="w-3.5 h-3.5" />{post.date}
-              </span>
-              <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                <Clock className="w-3.5 h-3.5" />{post.readTime}
-              </span>
-            </div>
-
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground leading-snug mb-6">
-              {post.title}
-            </h1>
-
-            {/* Author */}
-            <div className="flex items-center gap-3 mb-8 pb-8 border-b border-border">
-              <div className="w-10 h-10 rounded-full bg-brand-gradient flex items-center justify-center text-white font-bold text-sm flex-shrink-0">
+            {/* Author chip */}
+            <div className="flex items-center gap-3 mb-8 pb-8 border-b border-white/10">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center text-white font-bold text-sm flex-shrink-0 shadow-lg">
                 {post.author.avatar}
               </div>
               <div>
-                <div className="text-sm font-semibold text-foreground">{post.author.name}</div>
-                <div className="text-xs text-muted-foreground">{post.author.role}</div>
+                <div className="text-sm font-semibold text-white">{post.author.name}</div>
+                <div className="text-xs text-white/40">{post.author.role}</div>
               </div>
             </div>
 
@@ -422,13 +434,13 @@ export default async function SingleBlogPage({ params }: { params: Promise<{ slu
             <div className="prose-like">{renderBody(post.body)}</div>
 
             {/* Share */}
-            <div className="mt-12 pt-8 border-t border-border flex items-center gap-3">
-              <Share2 className="w-4 h-4 text-muted-foreground" />
-              <span className="text-sm text-muted-foreground">Share this article</span>
+            <div className="mt-12 pt-8 border-t border-white/10 flex flex-wrap items-center gap-3">
+              <Share2 className="w-4 h-4 text-white/30" />
+              <span className="text-sm text-white/30">Share this article</span>
               {['LinkedIn', 'Twitter', 'WhatsApp'].map((s) => (
                 <span
                   key={s}
-                  className="text-xs px-3 py-1.5 rounded-full border border-border hover:border-primary hover:text-primary cursor-pointer transition-colors"
+                  className="text-xs px-3 py-1.5 rounded-full border border-white/10 text-white/40 hover:border-violet-500/50 hover:text-violet-300 cursor-pointer transition-colors"
                 >
                   {s}
                 </span>
@@ -436,62 +448,69 @@ export default async function SingleBlogPage({ params }: { params: Promise<{ slu
             </div>
           </article>
 
-          {/* Sidebar */}
+          {/* ── Sidebar ── */}
           <aside className="space-y-8">
             {/* CTA card */}
-            <div className="bg-brand-gradient rounded-2xl p-6 text-white space-y-3">
-              <BookOpen className="w-7 h-7 text-white/80" />
-              <h3 className="font-bold text-lg leading-snug">Ready to build your alumni community?</h3>
-              <p className="text-sm text-white/80">Join 200+ institutions using KAPPLR to engage alumni at scale.</p>
-              <Link href="/pricing">
-                <span className="mt-2 inline-block px-5 py-2.5 bg-white text-primary font-semibold text-sm rounded-full cursor-pointer hover:bg-white/90 transition">
-                  Start Free Trial
-                </span>
-              </Link>
-            </div>
+            <Animate variant="slideRight">
+              <div className="relative overflow-hidden bg-gradient-to-br from-violet-600 via-purple-700 to-indigo-800 rounded-2xl p-6 space-y-3 shadow-xl shadow-violet-900/40">
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
+                <BookOpen className="w-7 h-7 text-white/70 relative z-10" />
+                <h3 className="font-bold text-lg text-white leading-snug relative z-10">Ready to build your alumni community?</h3>
+                <p className="text-sm text-white/70 relative z-10">Join 200+ institutions using KAPPLR to engage alumni at scale.</p>
+                <Link href="/pricing" className="relative z-10 inline-block mt-2">
+                  <span className="inline-block px-5 py-2.5 bg-white text-violet-700 font-semibold text-sm rounded-full cursor-pointer hover:bg-white/90 transition">
+                    Start Free Trial
+                  </span>
+                </Link>
+              </div>
+            </Animate>
 
             {/* Related posts */}
-            <div>
-              <h3 className="font-bold text-foreground mb-4 flex items-center gap-2">
-                <Tag className="w-4 h-4 text-primary" /> Related Articles
-              </h3>
-              <div className="space-y-4">
-                {related.map((p) => (
-                  <Link key={p.slug} href={`/blog/${p.slug}`} className="group flex gap-3 items-start">
-                    <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0">
-                      <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors leading-snug line-clamp-2">
-                        {p.title}
-                      </p>
-                      <p className="text-xs text-muted-foreground mt-1">{p.readTime}</p>
-                    </div>
-                  </Link>
-                ))}
+            <Animate variant="slideRight">
+              <div>
+                <h3 className="font-bold text-white mb-4 flex items-center gap-2 text-sm">
+                  <Tag className="w-4 h-4 text-violet-400" /> Related Articles
+                </h3>
+                <div className="space-y-4">
+                  {related.map((p) => (
+                    <Link key={p.slug} href={`/blog/${p.slug}`} className="group flex gap-3 items-start">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0">
+                        <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-semibold text-white/80 group-hover:text-violet-300 transition-colors leading-snug line-clamp-2">
+                          {p.title}
+                        </p>
+                        <p className="text-xs text-white/35 mt-1">{p.readTime}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
               </div>
-            </div>
+            </Animate>
           </aside>
         </div>
 
-        {/* More articles */}
+        {/* ── More articles ── */}
         <section className="mt-20">
-          <h2 className="text-2xl font-bold text-foreground mb-8">More Articles</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+          <h2 className="text-2xl font-extrabold text-white mb-8">More Articles</h2>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {related.map((p) => (
               <Link key={p.slug} href={`/blog/${p.slug}`} className="group block">
-                <article className="bg-white rounded-2xl border border-border overflow-hidden hover:shadow-md transition-shadow h-full flex flex-col">
+                <article className="relative bg-white/4 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/6 transition-colors h-full flex flex-col">
+                  <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${categoryAccent[p.category]} to-transparent`} />
                   <div className="relative h-44 overflow-hidden">
-                    <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                    <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0d0720]/90 via-[#0d0720]/20 to-transparent" />
                   </div>
                   <div className="p-5 flex flex-col flex-1 space-y-2">
-                    <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full self-start ${categoryColors[p.category]}`}>
+                    <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full self-start ${categoryBadge[p.category]}`}>
                       {p.category}
                     </span>
-                    <h3 className="font-bold text-foreground leading-snug group-hover:text-primary transition-colors flex-1">
+                    <h3 className="font-bold text-white leading-snug group-hover:text-violet-200 transition-colors flex-1">
                       {p.title}
                     </h3>
-                    <div className="flex items-center gap-3 text-xs text-muted-foreground pt-2 border-t border-border">
+                    <div className="flex items-center gap-3 text-xs text-white/30 pt-2 border-t border-white/8">
                       <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />{p.date}</span>
                       <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{p.readTime}</span>
                     </div>
@@ -504,6 +523,6 @@ export default async function SingleBlogPage({ params }: { params: Promise<{ slu
       </main>
 
       <Footer />
-    </>
+    </div>
   )
 }
